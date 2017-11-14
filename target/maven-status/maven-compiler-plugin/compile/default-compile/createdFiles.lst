@@ -1,0 +1,16 @@
+co\ufps\edu\controller\ProyectoController.class
+co\ufps\edu\config\WebConfig.class
+co\ufps\edu\model\LoginEstudiante.class
+co\ufps\edu\model\Evaluador.class
+co\ufps\edu\bd\SpringDbMgr.class
+co\ufps\edu\model\Linea.class
+co\ufps\edu\controller\LogController.class
+co\ufps\edu\config\MyWebAppInitializer.class
+co\ufps\edu\controller\AdminController.class
+co\ufps\edu\model\Administrador.class
+co\ufps\edu\model\Estudiante.class
+co\ufps\edu\controller\EvaluadorController.class
+co\ufps\edu\dao\EstudianteDao.class
+co\ufps\edu\dao\AdministradorDao.class
+co\ufps\edu\controller\EstudianteController.class
+co\ufps\edu\model\Proyecto.class
