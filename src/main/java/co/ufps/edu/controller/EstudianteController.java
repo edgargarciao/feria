@@ -21,9 +21,9 @@ public class EstudianteController {
 	// Devuelve el jsp
 	@GetMapping("/registrarEstudiante") // Path para el link
 	public String registration(HttpServletRequest request) {
-		request.getSession().setAttribute("sw", false);
+		/*request.getSession().setAttribute("sw", false);
 		request.getSession().setAttribute("titleMessage", "");
-		request.getSession().setAttribute("message", "");
+		request.getSession().setAttribute("message", "");*/
 		return "RegistrarEstudiante";
 	}
 
@@ -35,19 +35,12 @@ public class EstudianteController {
 	@PostMapping("/guardarEstudiante")
 	public String registrarEstudiante(@ModelAttribute("estudiante") Estudiante estudiante, Model model) {
 
-		// Implement business logic to save user details into a database
-		// .....
 		
-		System.out.println("FirstName : " + estudiante.getCodigo());
-		System.out.println("FirstName : " + estudiante.getNombre());
-		System.out.println("FirstName : " + estudiante.getApellido());
-		System.out.println("FirstName : " + estudiante.getEmail());
-
 		if (esCodigoValido()) {
 		}
 
 		boolean result = estudianteDao.registrarEstudiante(estudiante);
-		if (result) {
+	/*	if (result) {
 			model.addAttribute("sw", "true");
 			model.addAttribute("titleMessage", "Registro exitoso");
 			model.addAttribute("message", "El estudiante ha sido registrado exitosamente.");
@@ -55,7 +48,7 @@ public class EstudianteController {
 			model.addAttribute("sw", 3);
 			model.addAttribute("titleMessage", "Registro fallido");
 			model.addAttribute("message", "El estudiante no ha sido registrado.");
-		}
+		}*/
 
 		return "RegistrarEstudiante";
 	}

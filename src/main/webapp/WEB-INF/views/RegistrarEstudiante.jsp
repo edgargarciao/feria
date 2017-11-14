@@ -210,14 +210,13 @@
                   <h3 class="box-title">A continuación puede registrar al estudiante lider del proyecto.</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-
                 
                 <form:form action="guardarEstudiante" method="post" modelAttribute="estudiante">
                   <div class="box-body">
 
                     <div class="form-group">
                       <label class="form-control-label">Codigo</label>
-                       <form:input path="codigo" for="exampleInputEmail1" class="form-control" placeholder="1165409"/>                  
+                       <form:input path="codigo" class="form-control" placeholder="1165409"/>                  
                     </div>
 
                     <div class="form-group">
@@ -232,12 +231,12 @@
 
                     <div class="form-group">
                       <label class="form-control-label">Correo</label>
-                      <form:input path="email" class="form-control" placeholder="juanJoseAM@ufps.edu.co"/>
+                      <form:input type="email" path="email" class="form-control" placeholder="juanJoseAM@ufps.edu.co"/>
                     </div>
 
                     <div class="form-group">
                       <label class="form-control-label">Telefono</label>
-                      <form:input path="telefono" class="form-control" placeholder="3203804554"/>                    
+                      <form:input type="tel"  path="telefono" class="form-control" placeholder="3203804554"/>                    
                     </div>
 
                     <div class="form-group">
