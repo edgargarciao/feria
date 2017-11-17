@@ -1,8 +1,7 @@
 package co.ufps.edu.model;
 
 public class Linea {
-	
-	private int codigo;
+
 	private String nombre;
 	private String descripcion;
 	
@@ -10,19 +9,9 @@ public class Linea {
 		
 	}
 
-	public Linea(int codigo, String nombre, String descripcion) {
-		super();
-		this.codigo = codigo;
+	public Linea(String nombre, String descripcion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-	}
-
-	public int getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
 	}
 
 	public String getNombre() {

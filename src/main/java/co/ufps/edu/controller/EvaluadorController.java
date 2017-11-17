@@ -1,34 +1,41 @@
 package co.ufps.edu.controller;
 
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import co.ufps.edu.model.Estudiante;
+import co.ufps.edu.dao.EvaluadorDao;
 import co.ufps.edu.model.Evaluador;
 
 public class EvaluadorController {
 	
+	private EvaluadorDao evaluadorDao = new EvaluadorDao();
 	
-	
-	 @GetMapping("/") // Path para el link
+	 @GetMapping("/registrarEvaluador") // Path para el link
 	   public String registration() {
-	      return "";
+	      return "RegistrarEvaluador";
 	   }	 
 	 
-	 /*
+	 
 	   
-	   @ModelAttribute("")
-	   public Estudiante setUpUserForm() {
-	      return new ();
+	   @ModelAttribute("evaluador")
+	   public Evaluador setUpUserForm() {
+	      return new Evaluador();
 	   }
 	   
-	   */
-	
+	   
+	   @PostMapping("/guardarEvaluadores")
+		public String RegistrarEvaluador(@ModelAttribute("evaluador") Evaluador e, Model model) {
 
-	
-	   @PostMapping("/evaluadorProyecto")
+			evaluadorDao.registrarEvaluador(e);
+
+			return "RegistrarEvaluador";
+		}
+	   
+	   
+	   @PostMapping("/evaluarProyecto")
 	   public String evaluarProyecto(int idProyecto, int idEvaluador) {
 
 	      // Implement business logic to save user details into a database

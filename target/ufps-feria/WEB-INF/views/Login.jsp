@@ -5,11 +5,11 @@
     <title>Feria de Proyectos</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
-    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link href="../../dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
     <link href="../../plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
 
@@ -23,11 +23,11 @@
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="../../index2.html"><b>LOGIN</b>
+        <a><b>LOGIN</b>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Inicia sesión </p>
-        <form action="../../index2.html" method="post">
+        <p class="login-box-msg">Inicia sesion </p>
+        <form action="" method="post">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Codigo"/>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -43,8 +43,8 @@
               
             <div class="col-xs-12">  
 
-            <!--  
-              <div class="checkbox icheck">
+              
+              <!--<div class="checkbox icheck">
                 <label>
                   <input type="checkbox"> Remember Me
                 </label>
@@ -52,10 +52,10 @@
             
 
             </div><!-- /.col -->
-            <div class="col-xs-15">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-            </div><!-- /.col -->
-
+                <div class="col-xs-15">
+                  <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                </div><!-- /.col -->
+            </div>
 
           </div>
 
@@ -82,7 +82,7 @@
     <!-- jQuery 2.1.3 -->
     <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
-    <script src="../../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- iCheck -->
     <script src="../../plugins/iCheck/icheck.min.js" type="text/javascript"></script>
     <script>

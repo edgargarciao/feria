@@ -14,44 +14,18 @@ import co.ufps.edu.model.Proyecto;
 public class AdminController {
 
 	
-
-	   // Devuelve el jsp
 	
-	   @GetMapping("/registrarEvaluador") // Path para el link
-	   public String registration() {
-	      return "RegistrarEvaluador";
-	   }
-	   
-	   
-	   /*
-	   
+	
+	
+	
 	   @ModelAttribute("administrador")
-	   public Estudiante setUpUserForm() {
+	   public Administrador setUpUserForm() {
 	      return new Administrador();
 	   } 
 	   
-	   */
 	   
-	
-	   @PostMapping("/guardarEvaluador")
-	   public String registrarEvaluador(@ModelAttribute("evaluador") Evaluador evaluador, Model model) {
-
-	      // Implement business logic to save user details into a database
-	      
-	      
-	     System.out.println("FirstName : " + evaluador.getCodigo());
-	      System.out.println("FirstName : " + evaluador.getNombre());
-	      System.out.println("FirstName : " + evaluador.getApellido());
-	      System.out.println("FirstName : " + evaluador.getLinea());
-	      
-	      
-	      model.addAttribute("message", "User saved successfully.");
-
-	      return "RegistrarEvaluador";
-	   }
 	   
-
-	   @PostMapping("/guardarEvaluador")
+	   @PostMapping("/asignarProyecto")
 	   public String AsignarProyectos(@ModelAttribute("evaluador") Evaluador evaluador, Model model) {
 
 	      // Implement business logic to save user details into a database
@@ -64,7 +38,7 @@ public class AdminController {
 	   }
 	   
 	   
-	   @PostMapping("/evaluadorProyecto")
+	   @PostMapping("/calificarProyecto")
 	   public String calificarProyecto(int idProyecto, int idEvaluador) {
 
 	      // Implement business logic to save user details into a database
@@ -78,25 +52,9 @@ public class AdminController {
 	      return "CalificarProyecto";
 	   }
 	   
-	   
-	   
-	   @PostMapping("/evaluadorProyecto")
-	   public String registrarLineas(@ModelAttribute("evaluador") Linea linea, Model model) {
-
-	      // Implement business logic to save user details into a database
-	      //.....
-	      
-		  //model.asMap()
 	  
-	      
-	      
-	      //model.addAttribute("message", "User saved successfully.");
-
-	      return "RegistrarLineas";
-	   }
 	   
-	   
-	   @PostMapping("/evaluadorProyecto")
+	   @PostMapping("/AsignarHorario")
 	   public String AsignarHorario(@ModelAttribute("proyecto") Proyecto proyecto, Model model) {
 
 	      // Implement business logic to save user details into a database

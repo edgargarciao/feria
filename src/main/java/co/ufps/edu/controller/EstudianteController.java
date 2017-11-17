@@ -8,18 +8,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import co.ufps.edu.bd.SpringDbMgr;
 import co.ufps.edu.dao.EstudianteDao;
 import co.ufps.edu.model.Estudiante;
-import co.ufps.edu.model.Proyecto;
 
 @Controller
 public class EstudianteController {
 
 	private EstudianteDao estudianteDao = new EstudianteDao();
 
-	// Devuelve el jsp
-	@GetMapping("/registrarEstudiante") // Path para el link
+	
+	@GetMapping("/registrarEstudiante")
 	public String registration(HttpServletRequest request) {
 		/*request.getSession().setAttribute("sw", false);
 		request.getSession().setAttribute("titleMessage", "");
