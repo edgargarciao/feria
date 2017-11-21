@@ -8,32 +8,42 @@ import co.ufps.edu.bd.SpringDbMgr;
 public class LoginDao {
 
 	SpringDbMgr springDbMgr = new SpringDbMgr();
-	
-	public String authenticate(int codigo,String contraseña) {		
-		if(esEstudiante(codigo,contraseña)) {
+
+	public String authenticate(int codigo, String contraseña) {
+		if (esEstudiante(codigo, contraseña)) {
 			return "estudiante";
-		}
-		else if(esEvaluador(codigo,contraseña)){
-			return "evaluador";
-		}
-		else if(esAdmin(codigo,contraseña)){
+		} else if (esAdmin(codigo, contraseña)) {
 			return "admin";
+		} else if (esEvaluador(codigo, contraseña)) {
+			return "evaluador";
 		}
 		return "";
 	}
 
 	private boolean esAdmin(int codigo, String contraseña) {
-		// TODO Auto-generated method stub
-		return false;
+		MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+		mapSqlParameterSource.addValue("codigo", codigo);
+		mapSqlParameterSource.addValue("contraseña", contraseña);
+		SqlRowSet sqlRowSet = springDbMgr.executeQuery("SELECT codigo " + "	FROM administrador "
+				+ "	WHERE codigo = :codigo " + " AND contraseña = :contraseña", mapSqlParameterSource);
+		return (sqlRowSet.next());
 	}
 
 	private boolean esEvaluador(int codigo, String contraseña) {
-		// TODO Auto-generated method stub
-		return false;
+		MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+		mapSqlParameterSource.addValue("codigo", codigo);
+		mapSqlParameterSource.addValue("contraseña", contraseña);
+		SqlRowSet sqlRowSet = springDbMgr.executeQuery("SELECT codigo " + "	FROM evaluador "
+				+ "	WHERE codigo = :codigo " + " AND contraseña = :contraseña", mapSqlParameterSource);
+		return (sqlRowSet.next());
 	}
 
 	private boolean esEstudiante(int codigo, String contraseña) {
-		// TODO Auto-generated method stub
-		return false;
+		MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+		mapSqlParameterSource.addValue("codigo", codigo);
+		mapSqlParameterSource.addValue("contraseña", contraseña);
+		SqlRowSet sqlRowSet = springDbMgr.executeQuery("SELECT codigo " + "	FROM estudiante "
+				+ "	WHERE codigo = :codigo " + " AND contraseña = :contraseña", mapSqlParameterSource);
+		return (sqlRowSet.next());
 	}
 }
