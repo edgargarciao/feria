@@ -22,7 +22,7 @@ public class AdminController {
 	
 	// Devuelve el jsp
 	@GetMapping("/indexAdmin") // Path para el link
-	public String registration() {
+	public String getIndex() {
 		return "Administrador/indexAdmin";
 	}
 

@@ -122,16 +122,16 @@
                 <i class="fa fa-pencil"></i><span> Registrar Evaluador</span>
               </a>
               <a href="${contextPath}/ufps-feria/asignarProyectos">
-                <i class="fa fa-share"></i> <span> Asignar Proyecto</span>
+                <i class="fa fa-share-square-o"></i> <span> Asignar Proyecto</span>
               </a>
               <a href="${contextPath}/ufps-feria/calificarProyectos">
-                <i class="fa fa-share"></i> <span> Calificar Proyecto</span>
+                <i class="fa fa-check-square-o"></i> <span> Calificar Proyecto</span>
               </a>
               <a href="${contextPath}/ufps-feria/registrarLinea">
-                <i class="fa fa-share"></i> <span> Registrar Lineas</span>
+                <i class="fa fa-list"></i> <span> Registrar Lineas</span>
               </a>
-              <a href="${contextPath}/ufps-feria/AsignarHorarios">
-                <i class="fa fa-share"></i> <span> Asignar Horario</span>
+              <a href="${contextPath}/ufps-feria/asignarHorarios">
+                <i class="fa fa-calendar"></i> <span> Asignar Horario</span>
               </a>
             </li>
 

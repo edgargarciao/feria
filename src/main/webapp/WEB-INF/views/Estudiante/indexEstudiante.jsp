@@ -113,72 +113,13 @@
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">MAIN NAVIGATION</li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-dashboard"></i> <span>INFORMACION FERIA</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../../index.html"><i class="fa fa-circle-o"></i> MISION</a></li>
-                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> VISION</a></li>
-              </ul>
-            </li>
-
-            <li class="treeview active">
-              <a href="#">
-                <i class="fa fa-edit"></i> <span>ESTUDIANTE</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="general.html"><i class="fa fa-circle-o"></i> Registrar Estudiante</a></li>
-                <li><a href="advanced.html"><i class="fa fa-circle-o"></i> Registrar Proyecto</a></li>
-                
-              </ul>
-            </li>
-
+            <li class="header">Opciones del estudiante</li>
 
             <li class="treeview">
-              <a href="#">
-                <i class="fa fa-table"></i> <span>EVALUADOR</span>
-                <i class="fa fa-angle-left pull-right"></i>
+              <a href="${contextPath}/ufps-feria/registrarProyecto">
+                <i class="fa fa-pencil"></i><span> Registrar proyecto</span>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Evaluar Proyectos</a></li>
-                
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i> <span>ACCESO ESTUDIANTE</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-            
-              </ul>
-            </li>
-
-
-
-
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-share"></i> <span>ADMINISTRADOR</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-
-              <ul class="treeview-menu">
-
-                <li><a href="#"><i class="fa fa-circle-o"></i> Registrar Evaluador</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Asignar Proyecto</a></li>
-
-                <li><a href="#"><i class="fa fa-circle-o"></i> Calificar Proyecto</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Registrar Lineas</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> AsignarHorario</a></li>
-                
-              </ul>
-            </li>
-
+            </li>          
           </ul>
         </section>
         <!-- /.sidebar -->

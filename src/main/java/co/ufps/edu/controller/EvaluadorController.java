@@ -1,5 +1,7 @@
 package co.ufps.edu.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import co.ufps.edu.dao.EvaluadorDao;
 import co.ufps.edu.model.Evaluador;
+import co.ufps.edu.model.Proyecto;
 
 @Controller
 public class EvaluadorController {
@@ -24,6 +27,17 @@ public class EvaluadorController {
 		return new Evaluador();
 	}
 
+	@GetMapping("/asignarProyectos") // Path para el link
+	public String asignarProyectos(Model model,HttpServletRequest request) {
+		// validarSesion(request);
+		// initModel(model);
+		return "Administrador/AsignarProyecto"; // Nombre Pagina JSP
+	}
+	
+	@PostMapping("/asignarProyecto")
+	public String AsignarProyecto(@ModelAttribute("proyecto") Proyecto proyecto, Model model) {
+		return "Administrador/AsignarProyecto";
+	}
 	@PostMapping("/guardarEvaluadores")
 	public String RegistrarEvaluador(@ModelAttribute("evaluador") Evaluador e, Model model) {
 
@@ -31,35 +45,10 @@ public class EvaluadorController {
 
 		return "RegistrarEvaluador";
 	}
-
-	@PostMapping("/evaluarProyecto")
-	public String evaluarProyecto(int idProyecto, int idEvaluador) {
-
-		// Implement business logic to save user details into a database
-		// .....
-
-		// model.asMap()
-		/*
-		 * System.out.println("FirstName : " + estudiante.getCodigo());
-		 * System.out.println("FirstName : " + estudiante.getNombre());
-		 * System.out.println("FirstName : " + estudiante.getApellido());
-		 * System.out.println("FirstName : " + estudiante.getEmail());
-		 */
-
-		// model.addAttribute("message", "User saved successfully.");
-
-		return "EvaluarProyectos";
+	
+	// Devuelve el jsp
+	@GetMapping("/indexEvaluador") // Path para el link
+	public String getIndex() {
+		return "Evaluador/indexEvaluador";
 	}
-
-	@PostMapping("/asignarProyecto")
-	public String AsignarProyectos(@ModelAttribute("evaluador") Evaluador evaluador, Model model) {
-
-		// Implement business logic to save user details into a database
-		// .....
-
-		model.addAttribute("message", "User saved successfully.");
-
-		return "AsignarProyecto";
-	}
-
 }

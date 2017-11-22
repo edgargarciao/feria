@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import co.ufps.edu.dao.LineaDao;
 import co.ufps.edu.dao.ProyectoDao;
+import co.ufps.edu.model.Evaluador;
 import co.ufps.edu.model.Proyecto;
 import co.ufps.edu.util.JwtUtil;
 
@@ -27,7 +28,7 @@ public class ProyectoController {
 
 	@GetMapping("/registrarProyecto") // Path para el link
 	public String registration(Model model,HttpServletRequest request) {
-		validarSesion(request);
+		//validarSesion(request);
 		initModel(model);
 		return "Estudiante/RegistrarProyecto"; // Nombre Pagina JSP
 	}
@@ -69,27 +70,40 @@ public class ProyectoController {
 		return "Administrador/CalificarProyecto";
 	}
 
-	@GetMapping("/AsignarHorarios") // Path para el link
+	@GetMapping("/asignarHorarios") // Path para el link
 	public String asignarhorarios(Model model,HttpServletRequest request) {
 		// validarSesion(request);
 		// initModel(model);
-		return "Administrador/CalificarProyecto"; // Nombre Pagina JSP
+		return "Administrador/AsignarHorario"; // Nombre Pagina JSP
 	}
 	
-	@PostMapping("/AsignarHorario")
-	public String AsignarHorario(@ModelAttribute("proyecto") Proyecto proyecto, Model model) {
+	@PostMapping("/asignarHorario")
+	public String asignarHorario(@ModelAttribute("proyecto") Proyecto proyecto, Model model) {
 		return "Administrador/AsignarHorario";
 	}
 
-	@GetMapping("/asignarProyectos") // Path para el link
-	public String asignarProyectos(Model model,HttpServletRequest request) {
+	
+	@GetMapping("/evaluarProyectos") // Path para el link
+	public String evaluarProyectos(Model model,HttpServletRequest request) {
 		// validarSesion(request);
 		// initModel(model);
-		return "Administrador/AsignarProyecto"; // Nombre Pagina JSP
+		return "Evaluador/EvaluarProyecto"; // Nombre Pagina JSP
 	}
 	
-	@PostMapping("/AsignarProyecto")
-	public String AsignarProyecto(@ModelAttribute("proyecto") Proyecto proyecto, Model model) {
-		return "Administrador/AsignarProyecto";
+	@PostMapping("/evaluarProyecto")
+	public String EvaluarProyecto(@ModelAttribute("proyecto") Proyecto proyecto, Model model) {
+		return "Evaluador/EvaluarProyecto";
+	}
+	
+	@GetMapping("/visualizarProyectos") // Path para el link
+	public String visualizarProyectos(Model model,HttpServletRequest request) {
+		// validarSesion(request);
+		// initModel(model);
+		return "Evaluador/VisualizarProyecto"; // Nombre Pagina JSP
+	}
+	
+	@PostMapping("/visualizarProyecto")
+	public String visualizarProyecto(@ModelAttribute("proyecto") Proyecto proyecto, Model model) {
+		return "Evaluador/VisualizarProyecto";
 	}
 }

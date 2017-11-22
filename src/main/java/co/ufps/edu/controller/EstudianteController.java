@@ -54,4 +54,10 @@ public class EstudianteController {
 	private boolean esCodigoValido() {
 		return true;
 	}
+	
+	// Devuelve el jsp
+	@GetMapping("/indexEstudiante") // Path para el link
+	public String getIndex() {
+		return "Estudiante/indexEstudiante";
+	}
 }

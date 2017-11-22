@@ -117,16 +117,16 @@
                 <i class="fa fa-pencil"></i><span> Registrar Evaluador</span>
               </a>
               <a href="${contextPath}/ufps-feria/asignarProyectos">
-                <i class="fa fa-share"></i> <span> Asignar Proyecto</span>
+                <i class="fa fa-share-square-o"></i> <span> Asignar Proyecto</span>
               </a>
               <a href="${contextPath}/ufps-feria/calificarProyectos">
-                <i class="fa fa-share"></i> <span> Calificar Proyecto</span>
+                <i class="fa fa-check-square-o"></i> <span> Calificar Proyecto</span>
               </a>
               <a href="${contextPath}/ufps-feria/registrarLinea">
-                <i class="fa fa-share"></i> <span> Registrar Lineas</span>
+                <i class="fa fa-list"></i> <span> Registrar Lineas</span>
               </a>
-              <a href="${contextPath}/ufps-feria/AsignarHorarios">
-                <i class="fa fa-share"></i> <span> Asignar Horario</span>
+              <a href="${contextPath}/ufps-feria/asignarHorarios">
+                <i class="fa fa-calendar"></i> <span> Asignar Horario</span>
               </a>
             </li>
 
@@ -171,28 +171,32 @@
 
                  <div class="form-group">
                       <label for="exampleInputEmail1">Codigo</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="0151020">
                   </div>
 
                    <div class="form-group">
                       <label for="exampleInputEmail1">Nombre</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
                   </div>
 
 
                    <div class="form-group">
                       <label for="exampleInputEmail1">Apellido</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
                   </div>
+
+
+                  <div class="form-group">
+
+                     <form:select path="linea">
+                      <form:option value="" label="Seleccione la linea" />
+                      <form:options items="${lineas}" />
+                    </form:select>
+
+                   
+                    </div>
 
                   
-                   <div class="form-group">
-                      <label for="exampleInputEmail1">Linea</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-
-
-
                   </div>
 
                   <div class="box-footer">

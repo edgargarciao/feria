@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,7 +15,7 @@
     <!-- Theme style -->
     <link href="resources/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
-    <link href="../../plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
+    <link href="resources/js/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,19 +31,18 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Inicia sesion </p>
-        <form action="" method="post">
+
+         <form:form action="autenticar" method="post" modelAttribute="login">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="Codigo"/>
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            <form:input path="codigo" type="text" class="form-control" placeholder="1165409"/>                       
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password"/>
+            <form:password path="contraseña" class="form-control" placeholder="Password1234"/>            
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
 
-
           <div class="row">
-
               
             <div class="col-xs-12">  
 
@@ -60,7 +63,7 @@
           </div>
 
 
-        </form>
+        </form:form>
 
           
         <!--   
@@ -79,12 +82,13 @@
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
 
+
     <!-- jQuery 2.1.3 -->
-    <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- iCheck -->
-    <script src="../../plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+    <script src="resources/js/iCheck/icheck.min.js" type="text/javascript"></script>
     <script>
       $(function () {
         $('input').iCheck({

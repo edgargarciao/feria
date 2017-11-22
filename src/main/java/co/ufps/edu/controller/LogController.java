@@ -27,7 +27,12 @@ public class LogController {
 
 	private LoginDao loginDao = new LoginDao();
 
-	@GetMapping("/accesoEstudiante") // Base
+	@GetMapping("/index") // Base
+	public String main() {
+		return "index"; // Nombre del archivo jsp
+	}
+	
+	@GetMapping("/login") // Base
 	public String index() {
 		return "Login"; // Nombre del archivo jsp
 	}

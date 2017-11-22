@@ -23,10 +23,12 @@
   </head>
   <body class="skin-blue">
 
+    <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="../../index2.html" class="logo"><b>Admin</b>LTE</a>
+        <a href="${contextPath}/ufps-feria/indexEvaluador" class="logo"><b>Admin</b>LTE</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -113,70 +115,16 @@
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">MAIN NAVIGATION</li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-dashboard"></i> <span>INFORMACION FERIA</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../../index.html"><i class="fa fa-circle-o"></i> MISION</a></li>
-                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> VISION</a></li>
-              </ul>
-            </li>
-
-            <li class="treeview active">
-              <a href="#">
-                <i class="fa fa-edit"></i> <span>ESTUDIANTE</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="general.html"><i class="fa fa-circle-o"></i> Registrar Estudiante</a></li>
-                <li><a href="advanced.html"><i class="fa fa-circle-o"></i> Registrar Proyecto</a></li>
-                
-              </ul>
-            </li>
-
+            <li class="header">Opciones del evaluador</li>
 
             <li class="treeview">
-              <a href="#">
-                <i class="fa fa-table"></i> <span>EVALUADOR</span>
-                <i class="fa fa-angle-left pull-right"></i>
+              <a href="${contextPath}/ufps-feria/evaluarProyectos">
+                <i class="fa fa-check-square-o"></i><span> Evaluar proyectos</span>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Evaluar Proyectos</a></li>
-                
-              </ul>
+              <a href="${contextPath}/ufps-feria/visualizarProyectos">
+                <i class="fa fa-eye"></i> <span> Ver proyectos evaluados</span>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i> <span>ACCESO ESTUDIANTE</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-            
-              </ul>
-            </li>
-
-
-
-
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-share"></i> <span>ADMINISTRADOR</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-
-              <ul class="treeview-menu">
-
-                <li><a href="#"><i class="fa fa-circle-o"></i> Registrar Evaluador</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Asignar Proyecto</a></li>
-
-                <li><a href="#"><i class="fa fa-circle-o"></i> Calificar Proyecto</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Registrar Lineas</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> AsignarHorario</a></li>
-                
-              </ul>
+          </ul>
             </li>
 
           </ul>
