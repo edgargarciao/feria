@@ -1,9 +1,17 @@
 package co.ufps.edu.dao;
 
+import java.io.IOException;
 import java.sql.Date;
+import java.sql.JDBCType;
+import java.sql.SQLType;
+import java.sql.Types;
 import java.time.Instant;
 
+import org.springframework.jdbc.core.SqlTypeValue;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.support.SqlLobValue;
+import org.springframework.jdbc.support.lob.DefaultLobHandler;
+import org.springframework.web.multipart.MultipartFile;
 
 import co.ufps.edu.bd.SpringDbMgr;
 import co.ufps.edu.model.Proyecto;
@@ -11,7 +19,7 @@ import co.ufps.edu.model.ResultDB;
 
 public class ProyectoDao {
 
-	public boolean registrarProyecto(Proyecto p, int codigo) {
+	public boolean registrarProyecto(Proyecto p, int codigo, MultipartFile file) {
 		SpringDbMgr springDbMgr = new SpringDbMgr();
 
 		// Agrego los datos del registro (nombreColumna/Valor)
@@ -25,14 +33,37 @@ public class ProyectoDao {
 				+ "values(:titulo,:resumen,:docenteGuia,:codigoLinea)";
 
 		ResultDB result = springDbMgr.executeDmlWithKey(query, map);
+		ingresarArchivo(result.getKey(),file);
 		ingresarIntegrante(codigo, result.getKey(), true);
 		ingresarIntegrante(p.getCodigoEstudiante1(), result.getKey(), false);
-
+		
 		if (p.getCodigoEstudiante2() != 0) {
 			ingresarIntegrante(p.getCodigoEstudiante2(), result.getKey(), false);
 		}
 
 		return (result.getResult() == 1);
+	}
+
+	private void ingresarArchivo(long projectId, MultipartFile file) {
+
+		SpringDbMgr springDbMgr = new SpringDbMgr();
+
+		// Agrego los datos del registro (nombreColumna/Valor)
+		MapSqlParameterSource map = new MapSqlParameterSource();		
+		map.addValue("id_proyecto", projectId);
+		map.addValue("nombre", file.getOriginalFilename());
+		try {
+			map.addValue("contenido", new SqlLobValue(file.getBytes(),  new DefaultLobHandler()),Types.BLOB);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String query = "insert into Archivo(id_proyecto,nombre,contenido)"
+				+ "values(:id_proyecto,:nombre,:contenido)";
+
+		int result = springDbMgr.executeDml(query, map);
+		
 	}
 
 	private void ingresarIntegrante(int codigoEstudiante, long projectId, boolean esLider) {

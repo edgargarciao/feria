@@ -55,14 +55,14 @@ public class ProyectoController {
 	}
 
 	@PostMapping(value="/guardarProyecto")
-	public String guardarProyecto(//@ModelAttribute("pro") Proyecto proyecto, 
+	public String guardarProyecto(@ModelAttribute("pro") Proyecto proyecto, 
 			 @RequestParam("file") MultipartFile file,
 			Model model,
 			//@RequestParam("t") String token,
 			HttpServletRequest request) {
 		System.out.println("en");
 		//logController.validarSesion(token,request);
-		//proyectoDao.registrarProyecto(proyecto,115);
+		proyectoDao.registrarProyecto(proyecto,115,file);
 		return "Estudiante/RegistrarProyecto";
 	}
 

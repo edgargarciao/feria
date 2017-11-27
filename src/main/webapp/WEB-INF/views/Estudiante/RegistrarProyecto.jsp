@@ -124,8 +124,48 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
 
-                <form:form action="guardarProyecto" method="post" enctype="multipart/form-data" >
+                <form:form action="guardarProyecto" commandName="pro" method="post" enctype="multipart/form-data" >
                     <!-- text input -->
+
+                    <div class="form-group">
+                      <label class="form-control-label">Titulo</label>
+                      <form:input path="titulo" class="form-control" placeholder="La gran base de datos"/>
+                    </div>
+
+                     <div class="form-group">
+                      <label class="form-control-label">Resumen</label>
+                      <form:textarea path="resumen" class="form-control" placeholder="La gran base de datos es un articulo publicado en el año 1990 y trata acerca de..."/>
+                    </div>
+
+                    <div class="form-group">
+
+                      <form:select path="docenteGuia" class="form-control">
+                        <form:option value="" label="Seleccione el docente" />
+                        <form:options items="${docentes}"/>
+                      </form:select>
+
+                    </div>
+
+
+                     <div class="form-group">
+
+                      <form:select path="linea" class="form-control">
+                        <form:option value="" label="Seleccione la linea" />
+                        <form:options items="${lineas}"/>
+                      </form:select>                   
+                    </div>
+
+
+                    <div class="form-group">
+                      <label class="form-control-label">Codigo integrante 1</label>
+                       <form:input path="codigoEstudiante1" class="form-control" placeholder="1165409"/>                  
+                    </div>
+
+
+                    <div class="form-group">
+                      <label class="form-control-label">Codigo integrante 2</label>
+                       <form:input path="codigoEstudiante2" class="form-control" placeholder="1165410"/>                  
+                    </div>
 
                 
                    <div class="form-group">
