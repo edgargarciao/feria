@@ -14,6 +14,7 @@ co\ufps\edu\model\Administrador.class
 co\ufps\edu\model\Estudiante.class
 co\ufps\edu\model\Login.class
 co\ufps\edu\util\JwtUtil.class
+co\ufps\edu\dao\TutorDao.class
 co\ufps\edu\config\RootConfig.class
 co\ufps\edu\controller\EvaluadorController.class
 co\ufps\edu\dao\EstudianteDao.class
