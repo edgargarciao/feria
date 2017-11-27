@@ -1,6 +1,7 @@
 package co.ufps.edu.util;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Map.Entry;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
@@ -51,13 +52,9 @@ public class JwtUtil {
 		claims.put("codigo", codigo);
 		claims.put("rol", rol);
 
-		try {
-			return Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS512, secret.getBytes("UTF-8"))
-					.compact();
-		} catch (UnsupportedEncodingException e) {
-
-			e.printStackTrace();
-		}
-		return "";
+		return Jwts.builder()
+				.setClaims(claims)
+				.signWith(SignatureAlgorithm.HS512, secret)
+				.compact();
 	}
 }

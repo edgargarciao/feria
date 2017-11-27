@@ -27,12 +27,9 @@ public class AppConfig {
 		System.out.println("Prendio redis");
 		return template;
 	}
-	/*
-	 * public void setValue(String key, String value) {
-	 * template.opsForValue().set(key, value); }
-	 * 
-	 * public String getValue(String key) { return template.opsForValue().get(key);
-	 * }
-	 */
+
+	
+	
+	
 
 }

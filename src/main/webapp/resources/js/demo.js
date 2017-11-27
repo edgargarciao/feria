@@ -160,3 +160,4 @@ function setup() {
   if (tmp && $.inArray(tmp, my_skins))
     change_skin(tmp);
 }
+

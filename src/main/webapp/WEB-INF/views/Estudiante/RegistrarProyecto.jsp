@@ -28,11 +28,17 @@
     <![endif]-->
   </head>
   <body class="skin-blue">
+  <%
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+       String t =String.valueOf(request.getAttribute("token"));
+       String nombre = (String)request.getSession().getAttribute("user");
+  %>
   <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="../../index2.html" class="logo"><b>Admin</b>LTE</a>
+       <a href="${contextPath}/ufps-feria/indexEstudiante?t=<%=t%>" class="logo"><b>Admin</b>LTE</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -42,52 +48,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-              
 
-             
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="resources/img/der.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">Derly Angel</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <img src="resources/img/der.jpg" class="img-circle" alt="User Image" />
-                    <p>
-                      Derly Angel - Administradora
-                      <small>Member since Nov. 2012</small>
-                    </p>
-                  </li>
-                  <!-- Menu Body -->
-                  <li class="user-body">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </li>
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-
-              
-            </ul>
-          </div>
         </nav>
       </header>
       <!-- Left side column. contains the logo and sidebar -->
@@ -100,8 +61,7 @@
               <img src="resources/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p>Alexander Pierce</p>
-
+              <p><%=nombre%></p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
@@ -119,10 +79,15 @@
           <ul class="sidebar-menu">
             <li class="header">Opciones del estudiante</li>
             <li class="treeview">
-              <a href="${contextPath}/ufps-feria/registrarProyecto">
+              <a href="${contextPath}/ufps-feria/registrarProyecto?t=<%=t%>">
                 <i class="fa fa-pencil"></i><span> Registrar proyecto</span>
               </a>
-            </li>          
+            </li>     
+            <li class="treeview">
+                <a href="${contextPath}/ufps-feria/logout?t=<%=t%>">
+                <i class="fa fa-power-off"></i><span> Salir</span>
+              </a>
+            </li>       
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -150,8 +115,7 @@
             <div class="col-md-12">
 
             </div><!--/.col (left) -->
-           
-           
+                      
             <div class="col-md-12">
               <!-- general form elements disabled -->
               <div class="box box-warning">
@@ -160,66 +124,16 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
 
-                <form:form action="guardarProyecto" method="post" modelAttribute="proyecto">
+                <form:form action="guardarProyecto" method="post" enctype="multipart/form-data" >
                     <!-- text input -->
 
-                    <div class="form-group">
-                      <label class="form-control-label">Titulo</label>
-                      <form:input path="titulo" class="form-control" placeholder="La gran base de datos"/>
-                    </div>
+                
+                   <div class="form-group">
 
-                   
-                     <div class="form-group">
-                      <label class="form-control-label">Resumen</label>
-                      <form:input path="resumen" class="form-control" placeholder="La gran base de datos es un articulo publicado en el año 1990 y trata acerca de..."/>
-                    </div>
-
-
-                    <div class="form-group">
-                      <label class="form-control-label">Objetivo General</label>
-                      <form:input path="objetivoGeneral" class="form-control" placeholder="Analizar las base de datos..."/>
-                    </div>
-
-
-                     <div class="form-group">
-                      <label class="form-control-label">Objetivos Especificos</label>
-                      <form:textarea path="objetivoEspecifico" rows="3" class="form-control" placeholder="Analizar las base de datos..."/>
-                    </div>
-
-                     <div class="form-group">
-                      <label class="form-control-label">Alcance</label>
-                      <form:textarea path="alcance" rows="3" class="form-control" placeholder="Este proyecto solo abarca las investigaciones sobre la creacion de DML y el..."/>
-                    </div>
-
-
-                    <div class="form-group">
-                      <label class="form-control-label">Docente Guia</label>
-                       <form:input path="docenteGuia" class="form-control" placeholder="Oscar Gallardo"/>
-                    </div>
-
-
-                     <div class="form-group">
-
-                     <form:select path="linea">
-                      <form:option value="" label="Seleccione la linea" />
-                      <form:options items="${lineas}"/>
-                    </form:select>
-
-                   
-                    </div>
-
-
-                    <div class="form-group">
-                      <label class="form-control-label">Vincular Integrantes</label>
-                      <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                    </div>
-
-
-                    <div class="form-group">
                       <label class="form-control-label">Adjuntar Archivo</label>
-                      <input type="file" id="exampleInputFile">
-                      <p class="help-block">Example block-level help text here.</p>
+                        <input type="file" name="file" />      
                     </div>
+
 
                     <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Registrar</button>
@@ -250,5 +164,7 @@
     <script src="resources/js/app.min.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="resources/js/demo.js" type="text/javascript"></script>
+    <!-- Log -->
+    <script src="resources/js/log.js" type="text/javascript"></script>
   </body>
 </html>

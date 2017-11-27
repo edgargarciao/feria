@@ -2,30 +2,32 @@ package co.ufps.edu.model;
 
 import javax.servlet.http.Part;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Proyecto {
 
-	private String titulo, resumen, objetivoGeneral, objetivoEspecifico, alcance, docenteGuia, linea;
+	private String titulo, resumen, linea,docenteGuia;
 	private int codigoEstudiante1, codigoEstudiante2;
-	private Part archivo;
+	private MultipartFile  archivo;
 
 	public Proyecto() {
-
 	}
 
-	public Proyecto(String titulo, String resumen, String objetivoGeneral, String objetivoEspecifico, String alcance,
-			String docenteGuia, String linea, int codigoEstudiante1, int codigoEstudiante2, Part archivo) {
-		super();
+	
+
+	public Proyecto(String titulo, String resumen, String linea, String docenteGuia, int codigoEstudiante1,
+			int codigoEstudiante2,
+			 MultipartFile archivo) {
 		this.titulo = titulo;
 		this.resumen = resumen;
-		this.objetivoGeneral = objetivoGeneral;
-		this.objetivoEspecifico = objetivoEspecifico;
-		this.alcance = alcance;
-		this.docenteGuia = docenteGuia;
 		this.linea = linea;
+		this.docenteGuia = docenteGuia;
 		this.codigoEstudiante1 = codigoEstudiante1;
 		this.codigoEstudiante2 = codigoEstudiante2;
-		this.archivo = archivo;
+		//this.archivo = archivo;
 	}
+
+
 
 	public String getTitulo() {
 		return titulo;
@@ -41,30 +43,6 @@ public class Proyecto {
 
 	public void setResumen(String resumen) {
 		this.resumen = resumen;
-	}
-
-	public String getObjetivoGeneral() {
-		return objetivoGeneral;
-	}
-
-	public void setObjetivoGeneral(String objetivoGeneral) {
-		this.objetivoGeneral = objetivoGeneral;
-	}
-
-	public String getObjetivoEspecifico() {
-		return objetivoEspecifico;
-	}
-
-	public void setObjetivoEspecifico(String objetivoEspecifico) {
-		this.objetivoEspecifico = objetivoEspecifico;
-	}
-
-	public String getAlcance() {
-		return alcance;
-	}
-
-	public void setAlcance(String alcance) {
-		this.alcance = alcance;
 	}
 
 	public String getDocenteGuia() {
@@ -99,11 +77,11 @@ public class Proyecto {
 		this.codigoEstudiante2 = codigoEstudiante2;
 	}
 
-	public Part getArchivo() {
+	public MultipartFile getArchivo() {
 		return archivo;
 	}
 
-	public void setArchivo(Part archivo) {
+	public void setArchivo(MultipartFile archivo) {
 		this.archivo = archivo;
 	}
 

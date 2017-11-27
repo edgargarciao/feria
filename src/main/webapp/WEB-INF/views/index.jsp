@@ -44,6 +44,10 @@
 <!-- Navigation
     ==========================================-->
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<% 
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+    response.setHeader("Pragma", "no-cache"); // HTTP 1.0. 
+%>
 <nav id="menu" class="navbar navbar-default navbar-fixed-top">
   <div class="container"> 
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -61,56 +65,8 @@
         <li><a href="#team-section" class="page-scroll">Team</a></li>
         <li><a href="#contact-section" class="page-scroll">Contact</a></li>
 
-      <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-          <ul id="login-dp" class="dropdown-menu">
-            <li>
-               <div class="row">
-                  <div class="col-md-12">
-
-                    <form:form accept-charset="UTF-8" action="autenticar" method="post" modelAttribute="login">
-                      <div class="form-group has-feedback">
-                        <form:input path="codigo" type="text" class="form-control" placeholder="1165409"/>                       
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                      </div>
-                      <div class="form-group has-feedback">
-                        <form:password path="contraseña" class="form-control" placeholder="Password1234"/>            
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                      </div>
-                      <div class="row">
-                        <div class="col-xs-12">        
-                            <div class="col-xs-15">
-                              <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                            </div><!-- /.col -->
-                        </div>
-                      </div>
-                    </form:form>
-
-
-
-
-
-                     <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                        <div class="form-group">
-                           <label class="sr-only" for="exampleInputEmail2">Código</label>
-                           <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-                        </div>
-                        <div class="form-group">
-                           <label class="sr-only" for="exampleInputPassword2">Contraseña</label>
-                           <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                  <div class="help-block text-right"><a href="">Olvido la contraseña?</a></div>
-                        </div>
-                        <div class="form-group">
-                           <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                        </div>
-                     </form>
-                  </div>
-                  <div class="bottom text-center">
-                    Eres un nuevo estudiante? <a href="#"><b>Registrar Estudiante.</b></a>
-                  </div>
-               </div>
-            </li>
-          </ul>
+      <li href="${contextPath}/ufps-feria/login" class="dropdown">
+          <a href="${contextPath}/ufps-feria/login" class="dropdown-toggle" data-toggle="dropdown"><b href="${contextPath}/ufps-feria/login">Login</b> <span class="caret"></span></a>
         </li>
 
 

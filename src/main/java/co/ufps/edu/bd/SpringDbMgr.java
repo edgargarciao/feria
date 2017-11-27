@@ -9,7 +9,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+
+import co.ufps.edu.model.ResultDB;
 
 /**
  * Class with basic operations to interact with Database System.
@@ -123,10 +127,22 @@ public class SpringDbMgr {
 	public int executeDml(String query, MapSqlParameterSource parameterMap) {
 
 		NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-
-		int affectedRows = namedParameterJdbcTemplate.update(query, parameterMap);
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		int affectedRows = namedParameterJdbcTemplate.update(query, parameterMap,keyHolder);
 
 		return affectedRows;
+	}
+	
+	public ResultDB executeDmlWithKey(String query, MapSqlParameterSource parameterMap) {
+
+		ResultDB resultDB = new ResultDB();
+		NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		int affectedRows = namedParameterJdbcTemplate.update(query, parameterMap,keyHolder);
+		Long generatedId = keyHolder.getKey().longValue();
+		resultDB.setResult(affectedRows);
+		resultDB.setKey(generatedId);
+		return resultDB;
 	}
 
 	/**

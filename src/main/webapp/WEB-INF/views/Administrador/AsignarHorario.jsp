@@ -25,13 +25,19 @@
     <![endif]-->
   </head>
   <body class="skin-blue">
+    <%
+         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+         response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+         String t =String.valueOf(request.getAttribute("token"));
+         String nombre = (String)request.getSession().getAttribute("user");
+    %>
 
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="${contextPath}/ufps-feria/indexAdmin" class="logo"><b>Admin</b>FERIA</a>
+        <a href="${contextPath}/ufps-feria/indexAdmin?t=<%=t%>" class="logo"><b>Admin</b>FERIA</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -41,48 +47,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-           
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="resources/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">Alexander Pierce</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <img src="resources/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                    <p>
-                      Alexander Pierce - Web Developer
-                      <small>Member since Nov. 2012</small>
-                    </p>
-                  </li>
-                  <!-- Menu Body -->
-                  <li class="user-body">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </li>
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+
         </nav>
       </header>
       <!-- Left side column. contains the logo and sidebar -->
@@ -95,7 +60,7 @@
               <img src="resources/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p>Alexander Pierce</p>
+             <p><%=nombre%></p>
 
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -115,20 +80,23 @@
             <li class="header">Opciones del administrador</li>
 
             <li class="treeview">
-              <a href="${contextPath}/ufps-feria/registrarEvaluador">
+              <a href="${contextPath}/ufps-feria/registrarEvaluador?t=<%=t%>">
                 <i class="fa fa-pencil"></i><span> Registrar Evaluador</span>
               </a>
-              <a href="${contextPath}/ufps-feria/asignarProyectos">
+              <a href="${contextPath}/ufps-feria/asignarProyectos?t=<%=t%>">
                 <i class="fa fa-share-square-o"></i> <span> Asignar Proyecto</span>
               </a>
-              <a href="${contextPath}/ufps-feria/calificarProyectos">
+              <a href="${contextPath}/ufps-feria/calificarProyectos?t=<%=t%>">
                 <i class="fa fa-check-square-o"></i> <span> Calificar Proyecto</span>
               </a>
-              <a href="${contextPath}/ufps-feria/registrarLinea">
+              <a href="${contextPath}/ufps-feria/registrarLinea?t=<%=t%>">
                 <i class="fa fa-list"></i> <span> Registrar Lineas</span>
               </a>
-              <a href="${contextPath}/ufps-feria/asignarHorarios">
+              <a href="${contextPath}/ufps-feria/asignarHorarios?t=<%=t%>">
                 <i class="fa fa-calendar"></i> <span> Asignar Horario</span>
+              </a>
+              <a href="${contextPath}/ufps-feria/logout?t=<%=t%>">
+                <i class="fa fa-power-off"></i><span> Salir</span>
               </a>
             </li>
             

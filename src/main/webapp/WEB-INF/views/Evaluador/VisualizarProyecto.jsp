@@ -29,12 +29,18 @@
   </head>
   <body class="skin-blue">
 
+    <%
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+       String t =String.valueOf(request.getAttribute("token"));
+       String nombre = (String)request.getSession().getAttribute("user");
+    %>
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="../../index2.html" class="logo"><b>Admin</b>LTE</a>
+        <a href="${contextPath}/ufps-feria/indexEvaluador?t=<%=t%>" class="logo"><b>Admin</b>LTE</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -44,49 +50,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
 
-
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">Alexander Pierce</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <img src="resources/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                    <p>
-                      Alexander Pierce - Web Developer
-                      <small>Member since Nov. 2012</small>
-                    </p>
-                  </li>
-                  <!-- Menu Body -->
-                  <li class="user-body">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </li>
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
         </nav>
       </header>
       <!-- Left side column. contains the logo and sidebar -->
@@ -99,7 +63,7 @@
               <img src="resources/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p>Alexander Pierce</p>
+              <p><%=nombre%></p>
 
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -119,14 +83,17 @@
           <ul class="sidebar-menu">
             <li class="header">Opciones del Evaluador</li>
 
-            <li class="treeview">
-              <a href="${contextPath}/ufps-feria/evaluarProyectos">
-                <i class="fa fa-check-square-o"></i><span> Evaluar Proyecto</span>
+           <li class="treeview">
+              <a href="${contextPath}/ufps-feria/evaluarProyectos?t=<%=t%>">
+                <i class="fa fa-check-square-o"></i><span> Evaluar proyectos</span>
               </a>
-              <a href="${contextPath}/ufps-feria/visualizarProyectos">
-                <i class="fa fa-eye"></i> <span> Visualizar Proyectos</span>
-              </a>              
-            </li>            
+              <a href="${contextPath}/ufps-feria/visualizarProyectos?t=<%=t%>">
+                <i class="fa fa-eye"></i> <span> Ver proyectos evaluados</span>
+              </a>
+              <a href="${contextPath}/ufps-feria/logout?t=<%=t%>">
+                <i class="fa fa-power-off"></i><span> Salir</span>
+              </a>  
+            </li>          
           </ul>
 
         </section>
@@ -138,8 +105,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            VISUALIZAR PROYECTOS
-            
+            VISUALIZAR PROYECTOS            
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -148,34 +114,24 @@
           </ol>
         </section>
 
-
         <!-- Main content -->
         <section class="content">
           <div class="row">
             <!-- left column -->
             <div class="col-md-12">
               <!-- general form elements -->
-
-
               <div class="box box-danger">
                 <div class="box-header">
                   <h3 class="box-title">A continuacion puede Visualizar los Proyectos</h3>
                 </div>
-
                 <form:form action="visualizarProyecto" method="post" modelAttribute="proyecto">
                     <!-- text input -->
-
                     <div class="form-group">
                       <label class="form-control-label">Titulo</label>
                       <form:input path="titulo" class="form-control" placeholder="La gran base de datos"/>
                     </div>
-
-
                   </form:form>
-
-
               </div>
-
             </div><!--/.col (left) -->
             <!-- right column -->
             <div class="col-md-6">

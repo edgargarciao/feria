@@ -2,11 +2,13 @@ package co.ufps.edu.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import co.ufps.edu.dao.EstudianteDao;
 import co.ufps.edu.model.Estudiante;
@@ -15,6 +17,9 @@ import co.ufps.edu.model.Estudiante;
 public class EstudianteController {
 
 	private EstudianteDao estudianteDao = new EstudianteDao();
+	
+	@Autowired
+	private LogController logController; 
 
 	
 	@GetMapping("/registrarEstudiante")
@@ -57,7 +62,8 @@ public class EstudianteController {
 	
 	// Devuelve el jsp
 	@GetMapping("/indexEstudiante") // Path para el link
-	public String getIndex() {
+	public String getIndex(@RequestParam("t") String token,HttpServletRequest request) {		
+		logController.validarSesion(token, request);
 		return "Estudiante/indexEstudiante";
 	}
 }
