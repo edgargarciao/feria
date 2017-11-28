@@ -34,7 +34,7 @@
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="${contextPath}/ufps-feria/indexAdmin?t=<%=t%>" class="logo"><b>Admin</b>FERIA</a>
+        <a href="${contextPath}/ufps-feria/indexAdmin?t=<%=t%>" class="logo"><b>Feria De Proyectos</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -56,7 +56,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="resources/img/der.jpg" class="img-circle" alt="User Image" />
+              <img src="resources/img/administrador.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
               <p><%=nombre%></p>
@@ -65,20 +65,12 @@
             </div>
           </div>
           <!-- search form -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search..."/>
-              <span class="input-group-btn">
-                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
-
+          
 
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">Opciones del administrador</li>
+            <li class="header">Opciones Del Administrador</li>
 
             <li class="treeview">
               <a href="${contextPath}/ufps-feria/registrarEvaluador?t=<%=t%>">
@@ -111,13 +103,10 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            INDEX ADMIN
+            Bienvenido Administrador
             
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a class="active" href="#">index</a></li>
-          </ol>
+          
         </section>
 
         <!-- Main content -->
@@ -126,9 +115,7 @@
             <!-- left column -->
             <div class="col-md-12">
 
-            <h1>
-              BIENVENIDO ADMIN
-            </h1>
+            
 
               </div><!-- /.box -->
 
@@ -139,12 +126,8 @@
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
 
-      <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> 2.0
-        </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
-      </footer>
+      
+
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.3 -->

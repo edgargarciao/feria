@@ -40,7 +40,7 @@
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="${contextPath}/ufps-feria/indexEvaluador?t=<%=t%>" class="logo"><b>Admin</b>LTE</a>
+        <a href="${contextPath}/ufps-feria/indexEvaluador?t=<%=t%>" class="logo"><b>Feria De Proyectos</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -60,7 +60,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="resources/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+              <img src="resources/img/evaluador.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
               <p><%=nombre%></p>
@@ -69,14 +69,8 @@
             </div>
           </div>
           <!-- search form -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search..."/>
-              <span class="input-group-btn">
-                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
+
+
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
 
@@ -85,13 +79,13 @@
 
            <li class="treeview">
               <a href="${contextPath}/ufps-feria/evaluarProyectos?t=<%=t%>">
-                <i class="fa fa-check-square-o"></i><span> Evaluar proyectos</span>
+                <i class="fa fa-check-square-o"></i><span>Evaluar proyectos</span>
               </a>
               <a href="${contextPath}/ufps-feria/visualizarProyectos?t=<%=t%>">
-                <i class="fa fa-eye"></i> <span> Ver proyectos evaluados</span>
+                <i class="fa fa-eye"></i> <span>Ver proyectos evaluados</span>
               </a>
               <a href="${contextPath}/ufps-feria/logout?t=<%=t%>">
-                <i class="fa fa-power-off"></i><span> Salir</span>
+                <i class="fa fa-power-off"></i><span>Salir</span>
               </a>  
             </li>          
           </ul>
@@ -107,11 +101,9 @@
           <h1>
             VISUALIZAR PROYECTOS            
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">General Elements</li>
-          </ol>
+
+          
+
         </section>
 
         <!-- Main content -->
@@ -122,7 +114,7 @@
               <!-- general form elements -->
               <div class="box box-danger">
                 <div class="box-header">
-                  <h3 class="box-title">A continuacion puede Visualizar los Proyectos</h3>
+                  <h3 class="box-title">A continuacion podra Visualizar los Proyectos</h3>
                 </div>
                 <form:form action="visualizarProyecto" method="post" modelAttribute="proyecto">
                     <!-- text input -->
@@ -142,12 +134,8 @@
           </div>   <!-- /.row -->
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
-      <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> 2.0
-        </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
-      </footer>
+      
+
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.3 -->

@@ -20,6 +20,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link href="resources/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -38,7 +39,7 @@
     <div class="wrapper">
       
       <header class="main-header">
-       <a href="${contextPath}/ufps-feria/indexEstudiante?t=<%=t%>" class="logo"><b>Admin</b>LTE</a>
+       <a href="${contextPath}/ufps-feria/indexEstudiante?t=<%=t%>" class="logo"><b>Feria De Proyectos</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -58,7 +59,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="resources/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+              <img src="resources/img/estudiante.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
               <p><%=nombre%></p>
@@ -66,25 +67,21 @@
             </div>
           </div>
           <!-- search form -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search"/>
-              <span class="input-group-btn">
-                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
+
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">Opciones del estudiante</li>
+            <li class="header">Opciones Del Estudiante</li>
             <li class="treeview">
               <a href="${contextPath}/ufps-feria/registrarProyecto?t=<%=t%>">
                 <i class="fa fa-pencil"></i><span> Registrar proyecto</span>
               </a>
             </li>     
             <li class="treeview">
-                <a href="${contextPath}/ufps-feria/logout?t=<%=t%>">
+              <a href="${contextPath}/ufps-feria/verProyectos?t=<%=t%>">
+                <i class="fa fa-pencil"></i><span>Ver Proyectos Registrados</span>
+              </a>
+              <a href="${contextPath}/ufps-feria/logout?t=<%=t%>">
                 <i class="fa fa-power-off"></i><span> Salir</span>
               </a>
             </li>       
@@ -101,11 +98,8 @@
             REGISTRO DE PROYECTOS
           
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">General Elements</li>
-          </ol>
+          
+
         </section>
 
         <!-- Main content -->
@@ -150,13 +144,14 @@
                      <div class="form-group">
 
                       <form:select path="linea" class="form-control">
-                        <form:option value="" label="Seleccione la linea" />
+                        <form:option value="" label="Seleccione la linea de Trabajo" />
                         <form:options items="${lineas}"/>
                       </form:select>                   
-                    </div>
+                     </div>
 
 
                     <div class="form-group">
+                    
                       <label class="form-control-label">Codigo integrante 1</label>
                        <form:input path="codigoEstudiante1" class="form-control" placeholder="1165409"/>                  
                     </div>
@@ -186,12 +181,7 @@
           </div>   <!-- /.row -->
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
-      <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> 2.0
-        </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
-      </footer>
+      
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.3 -->

@@ -1,11 +1,17 @@
 package co.ufps.edu.dao;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.JDBCType;
+import java.sql.SQLException;
 import java.sql.SQLType;
 import java.sql.Types;
 import java.time.Instant;
+
+import javax.sql.rowset.serial.SerialBlob;
 
 import org.springframework.jdbc.core.SqlTypeValue;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -52,8 +58,9 @@ public class ProyectoDao {
 		MapSqlParameterSource map = new MapSqlParameterSource();		
 		map.addValue("id_proyecto", projectId);
 		map.addValue("nombre", file.getOriginalFilename());
+	
 		try {
-			map.addValue("contenido", new SqlLobValue(file.getBytes(),  new DefaultLobHandler()),Types.BLOB);
+			map.addValue("contenido", new SqlLobValue(new ByteArrayInputStream(file.getBytes()), file.getBytes().length, new DefaultLobHandler()), Types.BLOB);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

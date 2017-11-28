@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import co.ufps.edu.dao.EvaluadorDao;
+import co.ufps.edu.dao.LineaDao;
 import co.ufps.edu.model.Evaluador;
 import co.ufps.edu.model.Proyecto;
 
@@ -20,10 +21,12 @@ public class EvaluadorController {
 	@Autowired
 	private LogController logController;
 	private EvaluadorDao evaluadorDao = new EvaluadorDao();
+	private LineaDao lineaDao = new LineaDao();
 
 	@GetMapping("/registrarEvaluador") // Path para el link
-	public String registration(@RequestParam("t") String token,HttpServletRequest request) {
+	public String registration(Model model, @RequestParam("t") String token,HttpServletRequest request) {
 		logController.validarSesion(token, request);
+		model.addAttribute("ListaLineas", lineaDao.getLineas().values());
 		return "Administrador/RegistrarEvaluador";
 	}
 
@@ -31,24 +34,12 @@ public class EvaluadorController {
 	public Evaluador setUpUserForm() {
 		return new Evaluador();
 	}
-
-	@GetMapping("/asignarProyectos") // Path para el link
-	public String asignarProyectos(Model model,@RequestParam("t") String token,HttpServletRequest request) {
-		logController.validarSesion(token, request);
-		// initModel(model);
-		return "Administrador/AsignarProyecto"; // Nombre Pagina JSP
-	}
 	
-	@PostMapping("/asignarProyecto")
-	public String AsignarProyecto(@ModelAttribute("proyecto") Proyecto proyecto, Model model) {
-		return "Administrador/AsignarProyecto";
-	}
 	@PostMapping("/guardarEvaluadores")
 	public String RegistrarEvaluador(@ModelAttribute("evaluador") Evaluador e, Model model) {
-
 		evaluadorDao.registrarEvaluador(e);
-
-		return "RegistrarEvaluador";
+		model.addAttribute("ListaLineas", lineaDao.getLineas().values());
+		return "Administrador/RegistrarEvaluador";
 	}
 	
 	// Devuelve el jsp

@@ -3,18 +3,12 @@ package co.ufps.edu.model;
 public class Evaluador {
 	
 	private int codigo;
-	private String nombre, apellido,linea;
+	private String nombre, apellido,email,contraseña;
+	private String lineas[];
 	
 	public Evaluador() {
 	}
 
-	public Evaluador(int codigo, String nombre, String apellido, String linea) {
-		this.codigo = codigo;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.linea = linea;
-	}
-	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -33,11 +27,29 @@ public class Evaluador {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public String getLinea() {
-		return linea;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setLinea(String linea) {
-		this.linea = linea;
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String[] getLineas() {
+		return lineas;
+	}
+
+	public void setLineas(String lineas[]) {
+		this.lineas = lineas;
+	}
+
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
 
 }

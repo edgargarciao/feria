@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Optics</title>
+<title>Feria de Proyectos</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -59,16 +59,18 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#home" class="page-scroll">Home</a></li>
-        <li><a href="#about-section" class="page-scroll">About</a></li>
-        <li><a href="#services-section" class="page-scroll">Services</a></li>
-        <li><a href="#works-section" class="page-scroll">Portfolio</a></li>
-        <li><a href="#team-section" class="page-scroll">Team</a></li>
-        <li><a href="#contact-section" class="page-scroll">Contact</a></li>
+        <li><a href="#about-section" class="page-scroll">Que es ?</a></li>
+        <li><a href="#about-section" class="page-scroll">Objetivos</a></li>
 
-      <li href="${contextPath}/ufps-feria/login" class="dropdown">
-          <a href="${contextPath}/ufps-feria/login" class="dropdown-toggle" data-toggle="dropdown"><b href="${contextPath}/ufps-feria/login">Login</b> <span class="caret"></span></a>
-        </li>
+        <li><a href="#services-section" class="page-scroll">Importancia</a></li>
 
+        <li><a href="#works-section" class="page-scroll">Galeria</a></li>
+        <!--
+        <li><a href="#team-section" class="page-scroll">Team</a></li>-->
+        <li><a href="#contact-section" class="page-scroll">Participar</a></li>
+
+        <li><a href="${contextPath}/ufps-feria/login" class="page-scroll">Login</a></li>
+        
 
         </li>
       </ul>
@@ -81,8 +83,8 @@
 <!-- Header -->
 <header class="text-center" name="home">
   <div class="intro-text">
-    <h1>We are <span class="color">Optics</span></h1>
-    <p>An award winning digital design and development company</p>
+    <h1>Feria De <span class="color">Proyectos</span></h1>
+    <p>Charlas y Proyectos en Modalidad Posters </p>
     <div class="clearfix"></div>
     <a href="#about-section" class="btn btn-default btn-lg page-scroll">Learn More</a> </div>
 </header>
@@ -90,34 +92,55 @@
 <div id="about-section">
   <div class="container">
     <div class="section-title">
-      <h2>About Us</h2>
+      <h2>OBJETIVOS</h2>
       <hr>
     </div>
     <div class="space"></div>
     <div class="row">
       <div class="col-md-4">
-        <h4>Who We Are</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare diam commodo nibh ante facilisis bibendum.</p>
+        <h4>Objetivo General</h4>
+
+        <p>Dar visibilidad a los trabajos de aula realizados por los estudiantes de los distintos semestres del programa de Ingeniería de Sistemas, trabajos guiados por los docentes, pretendiendo retroalimentar a los demás estudiantes y exponiendo los resultados de sus proyectos a la comunidad académica en general, aprovechando el espacio para recibir aportes que ayuden en la formación del estudiante.</p>
+
       </div>
       <div class="col-md-4">
-        <h4>What We Do</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare diam commodo nibh ante facilisis bibendum.</p>
-      </div>
-      <div class="col-md-4">
-        <h4>Why Choose Us</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare diam commodo nibh ante facilisis bibendum.</p>
+        <h4>Objetivos Especificos</h4>
+
+        <p> • Brindar un espacio a los estudiantes para que socialicen los resultados de sus proyectos ante la comunidad académica y general</p>
+
+        <p> • Incentivar a los estudiantes de otros semestres a trabajar por proyectos y a buscar el componente investigativo en cada uno de sus trabajos académicos </p>
+
       </div>
     </div>
   </div>
 </div>
 <!-- Services Section -->
 <div id="services-section">
+
   <div class="container">
     <div class="section-title">
-      <h2>Our Services</h2>
+      <h2>Importancia</h2>
       <hr>
-    </div>
-    <div class="space"></div>
+  </div>
+
+<p>Una de las herramientas que los docentes tienen para lograr que los alumnos se apropien de un aprendizaje significativo, son los proyectos de aula, de aprendizaje o ahora los proyectos productivos. Estos permiten al docente y alumnos, solucionar situaciones dentro y fuera del aula y al mismo tiempo desarrollan habilidades cognitivas que facilita el aprendizaje de los contenidos básico del semestre.
+
+Los proyectos permiten al docente globalizar o integrar las áreas académicas a través de una temática especifica escogida por los alumnos según sus intereses y necesidades.
+
+Una herramienta de aprendizaje tiene la ventajas de organizar los contenidos con los cuales el docente puede trabajar según el tema y al mismo tiempo desarrolla el entusiasmo por la investigación a los alumnos como al docente.
+
+Durante el semestre academico se pueden realizar varios proyectos cortos según la época, o situaciones relevantes que sean del interés del alumno y docente.
+
+Es importante resaltar que los proyectos largos son tediosos y aburridos, de ahí que cuando se hacen cortos, los alumnos nunca pierden el entusiasmo.
+
+Una de las características de los proyectos de aula es que son innumerables las actividades practicas que se pueden hacer de todas las áreas académicas.
+
+En la actualidad se deben promover el desarrollo de proyectos productivos a partir de las necesidades de la Universidad y comunidad, en los cuales se involucren todos los integrantes de la comunidad educativa. Durante muchos años la práctica pedagógica ha sido con proyectos, mejorando considerablemente la comprension de los temas por parte de los estudiantes.</p>
+
+
+  <div class="space"></div>
+
+    <!--
     <div class="row">
       <div class="col-md-3 col-sm-6 service"> <i class="fa fa-desktop"></i>
         <h4>Web design</h4>
@@ -136,7 +159,13 @@
         <p>Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque.</p>
       </div>
     </div>
+    -->
+
+
     <div class="space"></div>
+     
+     <!--
+
     <div class="row">
       <div class="col-md-3 col-sm-6 service"> <i class="fa fa-shopping-cart"></i>
         <h4>eCommerce</h4>
@@ -155,13 +184,20 @@
         <p>Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque.</p>
       </div>
     </div>
+
+
+    -->
+
   </div>
+
+
 </div>
 <!-- Portfolio Section -->
+
 <div id="works-section">
   <div class="container"> <!-- Container -->
     <div class="section-title">
-      <h2>Our Portfolio</h2>
+      <h2>GALERIA</h2>
       <hr>
       <div class="clearfix"></div>
     </div>
@@ -182,96 +218,98 @@
       <div class="portfolio-items">
         <div class="col-sm-6 col-md-3 col-lg-3 web">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio/01.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/main/img/portfolio/IMG_8550.jpg" rel="prettyPhoto">
               <div class="hover-text">
                 <h4>Project Title</h4>
                 <small>Web Design</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/01.jpg" class="resources/main/img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/main/img/portfolio/IMG_8550.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 app">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio/02.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/main/img/portfolio/IMG_8552.jpg" rel="prettyPhoto">
               <div class="hover-text">
                 <h4>Project Title</h4>
                 <small>App Development</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/02.jpg" class="resources/main/img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/main/img/portfolio/IMG_8552.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 web">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio/03.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/main/img/portfolio/IMG_8566.jpg" rel="prettyPhoto">
               <div class="hover-text">
                 <h4>Project Title</h4>
                 <small>Web Design</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/03.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/main/img/portfolio/IMG_8566.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 web">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio/04.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/main/img/portfolio/IMG_8574.jpg" rel="prettyPhoto">
               <div class="hover-text">
                 <h4>Project Title</h4>
                 <small>Web Design</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/04.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/main/img/portfolio/IMG_8574.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 app">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio/05.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/main/img/portfolio//IMG_8593.jpg" rel="prettyPhoto">
               <div class="hover-text">
                 <h4>Project Title</h4>
                 <small>App Development</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/05.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/main/img/portfolio/IMG_8593.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 branding">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio/06.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/main/img/portfolio//IMG_8596.jpg" rel="prettyPhoto">
               <div class="hover-text">
                 <h4>Project Title</h4>
                 <small>Branding</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/06.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/main/img/portfolio/IMG_8596.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 branding app">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio/07.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/main/img/portfolio//IMG_8602.jpg" rel="prettyPhoto">
               <div class="hover-text">
                 <h4>Project Title</h4>
                 <small>App Development, Branding</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="img/portfolio/07.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/main/img/portfolio//IMG_8602.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 web">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio/08.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/main/img/portfolio/IMG_8610.jpg" rel="prettyPhoto">
               <div class="hover-text">
                 <h4>Project Title</h4>
                 <small>Web Design</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/08.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/main/img/portfolio/IMG_8610.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
 <!-- Team Section -->
 <div id="team-section">
   <div class="container">
@@ -319,43 +357,72 @@
 <div id="contact-section">
   <div class="container">
     <div class="section-title center">
-      <h2>Contact Us</h2>
+      <h2>Contáctenos</h2>
       <hr>
     </div>
     <div class="col-md-4">
-      <h4>Contact info</h4>
+      <h4>Información de contacto</h4>
       <div class="space"></div>
-      <p><i class="fa fa-map-marker"></i>4321 California St,<br>
-        San Francisco, CA 12345</p>
+      <p><i class="fa fa-map-marker"></i>Avenida Gran Colombia No. 12E-96,<br>
+        Cúcuta, Norte de Santander</p>
       <div class="space"></div>
-      <p><i class="fa fa-envelope-o"></i>info@company.com</p>
+      <p><i class="fa fa-envelope-o"></i>oficinadeprensa@ufps.edu.co</p>
       <div class="space"></div>
-      <p><i class="fa fa-phone"></i>+1 123 456 1234</p>
+      <p><i class="fa fa-phone"></i>(057)(7) 5776655 </p>
     </div>
     <div class="col-md-8">
-      <h4>Leave us a message</h4>
-      <form name="sentMessage" id="contactForm" novalidate>
+      <h4>Inscribir participante</h4>
+      <form:form action="guardarEstudiante" method="post" modelAttribute="estudiante">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <input type="text" id="name" class="form-control" placeholder="Name" required="required">
+               <form:input path="codigo" type="text" class="form-control" placeholder="Codigo" required="required"/>     <p class="help-block text-danger"></p>              
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <form:input path="nombre" class="form-control" placeholder="Nombre"/>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <form:input path="apellido" class="form-control" placeholder="Apellidos"/>                    
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <input type="email" id="email" class="form-control" placeholder="Email" required="required">
+              <form:input type="email" path="email" class="form-control" placeholder="Email"/>
               <p class="help-block text-danger"></p>
             </div>
           </div>
         </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <form:input type="tel"  path="telefono" class="form-control" placeholder="Celular"/>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <form:input path="semestre" class="form-control" placeholder="Semestre" />
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+        </div>        
         <div class="form-group">
-          <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
-          <p class="help-block text-danger"></p>
+              <form:password path="contrasena" class="form-control" placeholder="Contraseña"/>
+              <p class="help-block text-danger"></p>
         </div>
-        <div id="success"></div>
-        <button type="submit" class="btn btn-default">Send Message</button>
-      </form>
+
+        <button type="submit" class="btn btn-default" onclick="">Registrar solicitud</button>
+      </form:form>
     </div>
   </div>
 </div>
@@ -388,7 +455,6 @@
 <script type="text/javascript" src="resources/main/js/jquery.prettyPhoto.js"></script> 
 <script type="text/javascript" src="resources/main/js/jquery.isotope.js"></script> 
 <script type="text/javascript" src="resources/main/js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="resources/main/js/contact_me.js"></script> 
 
 <!-- Javascripts
     ================================================== --> 

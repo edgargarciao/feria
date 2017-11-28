@@ -1,3 +1,7 @@
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 
 <html>
@@ -32,10 +36,11 @@
         String nombre = (String)request.getSession().getAttribute("user");
     %>
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="${contextPath}/ufps-feria/indexAdmin?t=<%=t%>" class="logo"><b>Admin</b>FERIA</a>
+        <a href="${contextPath}/ufps-feria/indexAdmin?t=<%=t%>" class="logo"><b>Feria de Proyectos</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -54,7 +59,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="resources/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+              <img src="resources/img/administrador.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
               <p><%=nombre%></p>
@@ -63,18 +68,12 @@
             </div>
           </div>
           <!-- search form -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search..."/>
-              <span class="input-group-btn">
-                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
+
+
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">Opciones del administrador</li>
+            <li class="header">Opciones Del Administrador</li>
 
             <li class="treeview">
               <a href="${contextPath}/ufps-feria/registrarEvaluador?t=<%=t%>">
@@ -103,6 +102,7 @@
       </aside>
 
       <!-- Right side column. Contains the navbar and content of the page -->
+
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -110,11 +110,7 @@
              REGISTRAR EVALUADORES
            
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">General Elements</li>
-          </ol>
+         
         </section>
 
         <!-- Main content -->
@@ -131,79 +127,73 @@
               <div class="box box-info">
                 <div class="box-header">
                   <h3 class="box-title">A continuacion puede registrar evaluadores</h3>
-                </div>
+              </div>
+            <div class="box-body">
 
                 <form:form action="guardarEvaluadores" method="post" modelAttribute="evaluador">
-                <div class="box-body">
-
-                 <div class="form-group">
-                      <label for="exampleInputEmail1">Codigo</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="0151020">
-                  </div>
-
-                   <div class="form-group">
-                      <label for="exampleInputEmail1">Nombre</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
-                  </div>
-
-
-                   <div class="form-group">
-                      <label for="exampleInputEmail1">Apellido</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
-                  </div>
-
-
-                  <div class="form-group">
-
-                     <form:select path="linea">
-                      <form:option value="" label="Seleccione la linea" />
-                      <form:options items="${lineas}" />
-                    </form:select>
-
-                   
+                
+                    <div class="form-group">
+                      <label class="form-control-label">Código</label>
+                      <form:input path="codigo" class="form-control" placeholder="1151007"/>
                     </div>
 
-                  
-                  </div>
+
+                    <div class="form-group">
+                      <label class="form-control-label">Nombre</label>
+                      <form:input path="nombre" class="form-control" placeholder="juan Andres"/>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label class="form-control-label">Apellidos</label>
+                      <form:input path="apellido" class="form-control" placeholder="Pineda Jaimes"/>
+                    </div>
+
+                   <div class="form-group">
+                      <label class="form-control-label">email</label>
+                      <form:input path="email" class="checkbox" placeholder="juan.pineda@gmail.com"/>
+                    </div>
+
+                   <div class="form-group">
+                      <label class="form-control-label">Contraseña</label>
+                      <form:password path="contraseña" class="form-control" placeholder="Password1234"/>
+                    </div>
+                   
+                     <form:checkboxes element="span class='form-check-input'" items="${ListaLineas}" path="lineas"/>
 
                   <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Registrar</button>
 
                   </div>
 
-
              </form:form>
 
                
-                </div><!-- /.box-body -->
+             </div><!-- /.box-body -->
 
               </div><!-- /.box -->
 
             </div><!--/.col (left) -->
             <!-- right column -->
-            <div class="col-md-6">
-              <!-- general form elements disabled -->
-
-
-
+            <div class="col-md-30">
+              
             </div><!--/.col (right) -->
+
           </div>   <!-- /.row -->
         </section><!-- /.content -->
+
       </div><!-- /.content-wrapper -->
-      <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> 2.0
-        </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
-      </footer>
-    </div><!-- ./wrapper -->
+      
+    
+      
+  </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.3 -->
-    <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- FastClick -->
-    <script src='../../plugins/fastclick/fastclick.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js' type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="resources/js/app.min.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->

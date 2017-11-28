@@ -34,10 +34,14 @@ public class EstudianteController {
 	public Estudiante setUpUserForm() {
 		return new Estudiante();
 	}
+	
+	@GetMapping("/index") // Base
+	public String main() {
+		return "index"; // Nombre del archivo jsp
+	}
 
 	@PostMapping("/guardarEstudiante")
 	public String registrarEstudiante(@ModelAttribute("estudiante") Estudiante estudiante, Model model) {
-
 		
 		if (esCodigoValido()) {
 		}
@@ -53,7 +57,7 @@ public class EstudianteController {
 			model.addAttribute("message", "El estudiante no ha sido registrado.");
 		}*/
 
-		return "RegistrarEstudiante";
+		return "index";
 	}
 
 	private boolean esCodigoValido() {

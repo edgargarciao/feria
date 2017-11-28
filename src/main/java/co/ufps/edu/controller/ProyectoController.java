@@ -113,4 +113,26 @@ public class ProyectoController {
 	public String visualizarProyecto(@ModelAttribute("proyecto") Proyecto proyecto, Model model) {
 		return "Evaluador/VisualizarProyecto";
 	}
+	
+	@GetMapping("/verProyectos") // Path para el link
+	public String verProyectos(Model model,  @RequestParam("t") String token,HttpServletRequest request) {
+		logController.validarSesion(token, request);
+		// initModel(model);
+		return "Estudiante/VerProyectos"; // Nombre Pagina JSP
+	}
+	
+
+	@GetMapping("/asignarProyectos") // Path para el link
+	public String asignarProyectos(Model model,@RequestParam("t") String token,HttpServletRequest request) {
+		logController.validarSesion(token, request);
+		// initModel(model);
+		return "Administrador/AsignarProyecto"; // Nombre Pagina JSP
+	}
+	
+	@PostMapping("/asignarProyecto")
+	public String AsignarProyecto(@ModelAttribute("proyecto") Proyecto proyecto, Model model) {
+		return "Administrador/AsignarProyecto";
+	}
+	
+	
 }

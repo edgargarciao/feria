@@ -2,19 +2,19 @@ package co.ufps.edu.model;
 
 public class Estudiante {
 
-	private int codigo;
+	private String codigo;
 	private String nombre;
 	private String apellido;
 	private String email;
 	private String telefono;
-	private byte semestre;
+	private String semestre;
 	private String contrasena;
 	
 	public Estudiante(){
 		
 	}
 		
-	public Estudiante(int codigo, String nombre, String apellido, String email, String telefono, byte semestre,
+	public Estudiante(String codigo, String nombre, String apellido, String email, String telefono, String semestre,
 			String contrasena) {
 		this.codigo = codigo;
 		this.nombre = nombre;
@@ -24,10 +24,10 @@ public class Estudiante {
 		this.semestre = semestre;
 		this.contrasena = contrasena;
 	}
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 	public String getNombre() {
@@ -54,10 +54,10 @@ public class Estudiante {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public byte getSemestre() {
+	public String getSemestre() {
 		return semestre;
 	}
-	public void setSemestre(byte semestre) {
+	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
 	public String getContrasena() {

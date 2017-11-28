@@ -42,7 +42,7 @@
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="${contextPath}/ufps-feria/indexEvaluador?t=<%=t%>" class="logo"><b>Admin</b>LTE</a>
+        <a href="${contextPath}/ufps-feria/indexEvaluador?t=<%=t%>" class="logo"><b>Feria De Poroyectos</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -60,9 +60,11 @@
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
           <!-- Sidebar user panel -->
+
           <div class="user-panel">
+
             <div class="pull-left image">
-              <img src="resources/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+              <img src="resources/img/evaluador.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
               <p><%=nombre%></p>
@@ -70,15 +72,9 @@
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
+
           <!-- search form -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search..."/>
-              <span class="input-group-btn">
-                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
+          
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
 
@@ -108,11 +104,7 @@
             EVALUAR PROYECTOS
             
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">General Elements</li>
-          </ol>
+         
         </section>
 
 
@@ -126,20 +118,310 @@
 
               <div class="box box-danger">
                 <div class="box-header">
-                  <h3 class="box-title">A continuacion puede evaluar Proyectos</h3>
-                </div>
+
+                  
+              </div>
 
                 <form:form action="evaluarProyecto" method="post" modelAttribute="proyecto">
-                
-                    <!-- text input -->
 
-                    <div class="form-group">
-                      <label class="form-control-label">Titulo</label>
-                      <form:input path="titulo" class="form-control" placeholder="La gran base de datos"/>
+                  <div class="box-body">
+                  <div class="row">
+
+                     <p> "Presentación (20 Puntos) </p>
+
+                    <div class="col-xs-3">
+                      <label class="form-control-label">CRITERIO DE EVALUACIÓN</label>
+                     </div>
+
+                     <div class="col-xs-1">
+                      <label class="form-control-label">Valoración</label>
+                     </div>
+
+                     <div class="col-xs-3">
+                      <label class="form-control-label">Calificación</label>
+                     </div>
+
+                     <div class="col-xs-3">
+                      <label class="form-control-label">Observaciones</label>
+                     </div>
+
+
+                  </div>
+                </div><!-- /.box-body -->
+
+
+                <div class="box-body">
+                  <div class="row">
+
+                    <div class="col-xs-3">
+                      <label class="form-control-label">1. Creatividad y Diseño: el evaluador debe determinar 
+                                                        si presenta una organización y diseño que faciliten la 
+                                                        presentación del proyecto de aula.</label>
+                     </div>
+
+
+                     <div class="col-xs-1">
+                      <label class="form-control-label">10</label>
+                     </div>
+
+                    <div class="col-xs-3">
+                      <input type="text" class="form-control" placeholder="">
+                    </div>
+
+                    <div class="col-xs-3">
+                      
+                    <form:textarea path="resumen" class="form-control" placeholder=""/>
+                  </div>
+
+                  </div>
+                </div><!-- /.box-body -->
+
+
+
+
+                 <div class="box-body">
+                  <div class="row">
+
+                    <div class="col-xs-3">
+                      <label class="form-control-label">2.Puntualidad y Responsabilidad: Todos los participantes  deben  estar    presentes en la evaluación </label>
+                     </div>
+
+
+                     <div class="col-xs-1">
+                      <label class="form-control-label">10</label>
+                     </div>
+
+                    <div class="col-xs-3">
+                      <input type="text" class="form-control" placeholder="">
+                    </div>
+
+                    <div class="col-xs-3">
+                      
+                    <form:textarea path="resumen" class="form-control" placeholder=""/>
+                  </div>
+
+                  </div>
+                </div><!-- /.box-body -->
+
+
+
+                 <div class="box-body">
+                  <div class="row">
+
+                  <p> Proyecto de Aula (80 Puntos)</p>
+
+                    <div class="col-xs-3">
+                      <label class="form-control-label">1. Pertinencia: adecuación de los objetivos a las necesidades de la asignatura impartida </label>
+                     </div>
+
+
+                     <div class="col-xs-1">
+                      <label class="form-control-label">10</label>
+                     </div>
+
+                    <div class="col-xs-3">
+                      <input type="text" class="form-control" placeholder="">
+                    </div>
+
+                    <div class="col-xs-3">
+                      
+                    <form:textarea path="resumen" class="form-control" placeholder=""/>
+                  </div>
+
+
+                  </div>
+                </div><!-- /.box-body -->
+
+
+                <div class="box-body">
+                  <div class="row">
+
+                    <div class="col-xs-3">
+                      <label class="form-control-label">2.Participación: Se evidencia la participación del docente en el seguimiento al proyecto de aula. </label>
+                     </div>
+
+
+                     <div class="col-xs-1">
+                      <label class="form-control-label">10</label>
+                     </div>
+
+                    <div class="col-xs-3">
+                      <input type="text" class="form-control" placeholder="">
+                    </div>
+
+                    <div class="col-xs-3">
+                      
+                    <form:textarea path="resumen" class="form-control" placeholder=""/>
+                  </div>
+                  
+
+                  </div>
+                </div><!-- /.box-body -->
+
+
+                <div class="box-body">
+                  <div class="row">
+
+                    <div class="col-xs-3">
+                      <label class="form-control-label">3.Utilidad: grado de aprovechamiento pedagógico de las experiencias y resultados del proyecto.</label>
+                     </div>
+
+
+                     <div class="col-xs-1">
+                      <label class="form-control-label">20</label>
+                     </div>
+
+                    <div class="col-xs-3">
+                      <input type="text" class="form-control" placeholder="">
+                    </div>
+
+                    <div class="col-xs-3">
+                      
+                    <form:textarea path="resumen" class="form-control" placeholder=""/>
+                  </div>
+                  
+
+                  </div>
+                </div><!-- /.box-body -->
+
+
+
+                <div class="box-body">
+                  <div class="row">
+
+                    <div class="col-xs-3">
+                      <label class="form-control-label">4. Programación: capacidad para organizar y racionalizar todos los pasos preestablecidos.</label>
+                     </div>
+
+
+                     <div class="col-xs-1">
+                      <label class="form-control-label">10</label>
+                     </div>
+
+                    <div class="col-xs-3">
+                      <input type="text" class="form-control" placeholder="">
+                    </div>
+
+                    <div class="col-xs-3">
+                      
+                    <form:textarea path="resumen" class="form-control" placeholder=""/>
+                  </div>
+                  
+
+                  </div>
+                </div><!-- /.box-body -->
+
+
+
+
+                <div class="box-body">
+                  <div class="row">
+
+                    <div class="col-xs-3">
+                      <label class="form-control-label">5. Metodología: El equipo de trabajo adopto una metodología de desarrollo del proyecto.</label>
+                     </div>
+
+
+                     <div class="col-xs-1">
+                      <label class="form-control-label">10</label>
+                     </div>
+
+                    <div class="col-xs-3">
+                      <input type="text" class="form-control" placeholder="">
+                    </div>
+
+                    <div class="col-xs-3">
+                      
+                    <form:textarea path="resumen" class="form-control" placeholder=""/>
+                  </div>
+                  
+
+                  </div>
+                </div><!-- /.box-body -->
+
+                 <div class="box-body">
+                  <div class="row">
+
+                    <div class="col-xs-3">
+                      <label class="form-control-label">6. Gestión: ejecución de las acciones dentro del marco de una programación determinada.</label>
+                     </div>
+
+
+                     <div class="col-xs-1">
+                      <label class="form-control-label">10</label>
+                     </div>
+
+                    <div class="col-xs-3">
+                      <input type="text" class="form-control" placeholder="">
+                    </div>
+
+                    <div class="col-xs-3">
+                      
+                    <form:textarea path="resumen" class="form-control" placeholder=""/>
+                  </div>
+                  
+
+                  </div>
+                </div><!-- /.box-body -->
+
+                 <div class="box-body">
+                  <div class="row">
+
+                    <div class="col-xs-3">
+                      <label class="form-control-label">7. Trabajo en equipo: Se evidencia la  apropiación de la temática por parte de todos los miembros del equipo de trabajo.</label>
+                     </div>
+
+
+                     <div class="col-xs-1">
+                      <label class="form-control-label">10</label>
+                     </div>
+
+                    <div class="col-xs-3">
+                      <input type="text" class="form-control" placeholder="">
+                    </div>
+
+                    <div class="col-xs-3">
+                      
+                    <form:textarea path="resumen" class="form-control" placeholder=""/>
+                  </div>
+                  
+
+                  </div>
+                </div><!-- /.box-body -->
+
+
+                 <div class="box-body">
+                  <div class="row">
+
+                    <div class="col-xs-3">
+                      <label class="form-control-label">PUNTUACIÓN OBTENIDA (Se debe sumar los puntos obtenidos en cada criterio para obtener la puntuación total)</label>
+                     </div>
+
+
+                    <div class="col-xs-1">
+                      <input type="text" class="form-control" placeholder="">
                     </div>
 
 
-                   </form:form>
+                    <div class="col-xs-3">
+                      <input type="text" class="form-control" placeholder="">
+                    </div>
+
+
+
+                    
+                  
+
+                  </div>
+                </div><!-- /.box-body -->
+
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Enviar Evaluacion</button>
+                </div>
+
+
+                </form:form>
 
 
               </div>
@@ -154,12 +436,8 @@
           </div>   <!-- /.row -->
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
-      <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> 2.0
-        </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
-      </footer>
+
+
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.3 -->

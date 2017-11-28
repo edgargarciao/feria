@@ -36,11 +36,6 @@ public class LogController {
 		getLogOut(token,request);
 		return new ModelAndView("index"); // Nombre del archivo jsp
 	}
-
-	@GetMapping("/index") // Base
-	public String main() {
-		return "index"; // Nombre del archivo jsp
-	}
 	
 	@GetMapping("/login") // Base
 	public String index() {
