@@ -41,6 +41,11 @@ public class LogController {
 	public String index() {
 		return "Login"; // Nombre del archivo jsp
 	}
+	
+	@GetMapping("/") // Base
+	public String main() {
+		return "index"; // Nombre del archivo jsp
+	}
 
 	@ModelAttribute("login")
 	public Login setUpUserForm() {
@@ -56,8 +61,10 @@ public class LogController {
 			 String jwt = jwtUtil.generateToken(resultado,
 			 String.valueOf(login.getCodigo()));
 			 request.setAttribute("token", jwt);
+			 request.getSession().setAttribute("codigo", login.getCodigo());
 			 HttpSession session = request.getSession();			 
 			 template.opsForValue().set("SESSION:" + login.getCodigo(), jwt);
+			 session.setAttribute("codigo", login.getCodigo());
 			if (resultado.equals("estudiante")) {
 				session.setAttribute("user", "Estudiante");
 				return "Estudiante/indexEstudiante";
@@ -84,6 +91,9 @@ public class LogController {
 			throw new RuntimeException("FALTA TOKEN");
 		}
 		request.setAttribute("token", token);
+		request.getSession().setAttribute("codigo", codigo);
+		
+		
 	}
 	
 	private void getLogOut(String token, HttpServletRequest request) {

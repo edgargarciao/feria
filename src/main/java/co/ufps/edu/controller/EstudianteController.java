@@ -3,12 +3,14 @@ package co.ufps.edu.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import co.ufps.edu.dao.EstudianteDao;
 import co.ufps.edu.model.Estudiante;
@@ -40,24 +42,18 @@ public class EstudianteController {
 		return "index"; // Nombre del archivo jsp
 	}
 
-	@PostMapping("/guardarEstudiante")
+	@PostMapping(value = "/guardarEstudiante")
 	public String registrarEstudiante(@ModelAttribute("estudiante") Estudiante estudiante, Model model) {
-		
 		if (esCodigoValido()) {
 		}
-
-		boolean result = estudianteDao.registrarEstudiante(estudiante);
-	/*	if (result) {
-			model.addAttribute("sw", "true");
-			model.addAttribute("titleMessage", "Registro exitoso");
-			model.addAttribute("message", "El estudiante ha sido registrado exitosamente.");
-		} else {
-			model.addAttribute("sw", 3);
-			model.addAttribute("titleMessage", "Registro fallido");
-			model.addAttribute("message", "El estudiante no ha sido registrado.");
-		}*/
-
-		return "index";
+		
+		try{
+			boolean result = estudianteDao.registrarEstudiante(estudiante);
+		}catch(Exception e) {
+			
+		}
+		
+		return "redirect:/index"; 
 	}
 
 	private boolean esCodigoValido() {

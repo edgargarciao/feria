@@ -7,27 +7,11 @@ import org.springframework.web.multipart.MultipartFile;
 public class Proyecto {
 
 	private String titulo, resumen, linea,docenteGuia;
-	private int codigoEstudiante1, codigoEstudiante2;
+	private int cod,codigoEstudiante1, codigoEstudiante2;
 	private MultipartFile  archivo;
 
 	public Proyecto() {
 	}
-
-	
-
-	public Proyecto(String titulo, String resumen, String linea, String docenteGuia, int codigoEstudiante1,
-			int codigoEstudiante2,
-			 MultipartFile archivo) {
-		this.titulo = titulo;
-		this.resumen = resumen;
-		this.linea = linea;
-		this.docenteGuia = docenteGuia;
-		this.codigoEstudiante1 = codigoEstudiante1;
-		this.codigoEstudiante2 = codigoEstudiante2;
-		//this.archivo = archivo;
-	}
-
-
 
 	public String getTitulo() {
 		return titulo;
@@ -83,6 +67,18 @@ public class Proyecto {
 
 	public void setArchivo(MultipartFile archivo) {
 		this.archivo = archivo;
+	}
+
+
+
+	public int getCod() {
+		return cod;
+	}
+
+
+
+	public void setCod(int cod) {
+		this.cod = cod;
 	}
 
 }

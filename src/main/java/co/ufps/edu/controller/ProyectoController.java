@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.ufps.edu.dao.LineaDao;
 import co.ufps.edu.dao.ProyectoDao;
@@ -58,12 +59,14 @@ public class ProyectoController {
 	public String guardarProyecto(@ModelAttribute("pro") Proyecto proyecto, 
 			 @RequestParam("file") MultipartFile file,
 			Model model,
-			//@RequestParam("t") String token,
-			HttpServletRequest request) {
+			@RequestParam("t") String token,
+			HttpServletRequest request,
+			RedirectAttributes redirectAttributes) {
 		System.out.println("en");
-		//logController.validarSesion(token,request);
-		proyectoDao.registrarProyecto(proyecto,115,file);
-		return "Estudiante/RegistrarProyecto";
+		logController.validarSesion(token,request);
+		proyectoDao.registrarProyecto(proyecto,proyecto.getCod(),file);
+		redirectAttributes.addAttribute("t", token);
+		return "redirect:/registrarProyecto";
 	}
 
 	@GetMapping("/calificarProyectos") // Path para el link

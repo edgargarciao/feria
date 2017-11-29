@@ -34,6 +34,7 @@
         response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
        String t =String.valueOf(request.getAttribute("token"));
        String nombre = (String)request.getSession().getAttribute("user");
+       int codigo = Integer.parseInt(request.getSession().getAttribute("codigo").toString());
   %>
   <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     <div class="wrapper">
@@ -59,7 +60,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="resources/img/estudiante.jpg" class="img-circle" alt="User Image" />
+              <img src="resources/img/avatar.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
               <p><%=nombre%></p>
@@ -118,22 +119,25 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
 
-                <form:form action="guardarProyecto" commandName="pro" method="post" enctype="multipart/form-data" >
+                <form:form action="guardarProyecto" id="formRP" commandName="pro" method="post" enctype="multipart/form-data" >
                     <!-- text input -->
 
+                    <form:input path="cod" type="hidden" value="<%= codigo %>"/>
+                    
+                    <input type="hidden" name="t" id="t"  value="<%= t %>" />      
                     <div class="form-group">
                       <label class="form-control-label">Titulo</label>
-                      <form:input path="titulo" class="form-control" placeholder="La gran base de datos"/>
+                      <form:input path="titulo" id="titulo" class="form-control" placeholder="La gran base de datos"/>
                     </div>
 
                      <div class="form-group">
                       <label class="form-control-label">Resumen</label>
-                      <form:textarea path="resumen" class="form-control" placeholder="La gran base de datos es un articulo publicado en el año 1990 y trata acerca de..."/>
+                      <form:textarea path="resumen" id="resumen" class="form-control" placeholder="La gran base de datos es un articulo publicado en el año 1990 y trata acerca de..."/>
                     </div>
 
                     <div class="form-group">
 
-                      <form:select path="docenteGuia" class="form-control">
+                      <form:select path="docenteGuia" id="docenteGuia" class="form-control">
                         <form:option value="" label="Seleccione el docente" />
                         <form:options items="${docentes}"/>
                       </form:select>
@@ -143,7 +147,7 @@
 
                      <div class="form-group">
 
-                      <form:select path="linea" class="form-control">
+                      <form:select path="linea" id="linea" class="form-control">
                         <form:option value="" label="Seleccione la linea de Trabajo" />
                         <form:options items="${lineas}"/>
                       </form:select>                   
@@ -153,25 +157,25 @@
                     <div class="form-group">
                     
                       <label class="form-control-label">Codigo integrante 1</label>
-                       <form:input path="codigoEstudiante1" class="form-control" placeholder="1165409"/>                  
+                       <form:input path="codigoEstudiante1" id="codigoEstudiante1" class="form-control" placeholder="1165409"/>                  
                     </div>
 
 
                     <div class="form-group">
                       <label class="form-control-label">Codigo integrante 2</label>
-                       <form:input path="codigoEstudiante2" class="form-control" placeholder="1165410"/>                  
+                       <form:input path="codigoEstudiante2" id="codigoEstudiante2" class="form-control" placeholder="1165410"/>                  
                     </div>
 
                 
                    <div class="form-group">
 
                       <label class="form-control-label">Adjuntar Archivo</label>
-                        <input type="file" name="file" />      
+                        <input type="file" name="file" id="file" />      
                     </div>
 
 
                     <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <button id="submit" type="submit" class="btn btn-primary">Registrar</button>
                   </div>
 
                  </form:form>
@@ -195,6 +199,6 @@
     <!-- AdminLTE for demo purposes -->
     <script src="resources/js/demo.js" type="text/javascript"></script>
     <!-- Log -->
-    <script src="resources/js/log.js" type="text/javascript"></script>
+    <script src="resources/main/js/rproyecto.js" type="text/javascript"></script>
   </body>
 </html>

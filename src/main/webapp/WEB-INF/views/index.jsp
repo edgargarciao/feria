@@ -53,13 +53,13 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand" href="index.html">Optics</a> </div>
+      <a class="navbar-brand" href="${contextPath}/ufps-feria/index">UFPS</a> </div>
     
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#home" class="page-scroll">Home</a></li>
-        <li><a href="#about-section" class="page-scroll">Que es ?</a></li>
+        <li><a href="#home" class="page-scroll">Inicio</a></li>
+        <li><a href="#services-what" class="page-scroll">Qué es ?</a></li>
         <li><a href="#about-section" class="page-scroll">Objetivos</a></li>
 
         <li><a href="#services-section" class="page-scroll">Importancia</a></li>
@@ -86,8 +86,28 @@
     <h1>Feria De <span class="color">Proyectos</span></h1>
     <p>Charlas y Proyectos en Modalidad Posters </p>
     <div class="clearfix"></div>
-    <a href="#about-section" class="btn btn-default btn-lg page-scroll">Learn More</a> </div>
+    <a href="#about-section" class="btn btn-default btn-lg page-scroll">Leer más</a> </div>
 </header>
+
+<!-- Services Section -->
+<div id="services-what">
+
+  <div class="container">
+    <div class="section-title">
+    <br>
+    <br>
+    <br>
+      <h2>Qué es?</h2>
+      <hr>
+  </div>
+
+<p>Proyectos de aula es una actividad universitaria de la carrera de ingeniería de sistemas de la universidad francisco de paula Santander que se enfoca en propiciar el desarrollo de las competencias e integrar las habilidades y conocimientos adquiridos en los estudiantes de las demás asignaturas a lo largo del semestre y de la carrera. 
+En el marco de las asignaturas de la carrera de Ingeniería de Sistemas guiadas en el semestre, los estudiantes de la carrera desarrollan proyectos de aula, en los cuales integran sus habilidades y conocimientos adquiridos en las demás asignaturas.
+</p>
+
+  </div>
+</div>  
+
 <!-- About Section -->
 <div id="about-section">
   <div class="container">
@@ -137,57 +157,6 @@ Una de las características de los proyectos de aula es que son innumerables las
 
 En la actualidad se deben promover el desarrollo de proyectos productivos a partir de las necesidades de la Universidad y comunidad, en los cuales se involucren todos los integrantes de la comunidad educativa. Durante muchos años la práctica pedagógica ha sido con proyectos, mejorando considerablemente la comprension de los temas por parte de los estudiantes.</p>
 
-
-  <div class="space"></div>
-
-    <!--
-    <div class="row">
-      <div class="col-md-3 col-sm-6 service"> <i class="fa fa-desktop"></i>
-        <h4>Web design</h4>
-        <p>Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam.</p>
-      </div>
-      <div class="col-md-3 col-sm-6 service"> <i class="fa fa-gears"></i>
-        <h4>App Development</h4>
-        <p>Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque.</p>
-      </div>
-      <div class="col-md-3 col-sm-6 service"> <i class="fa fa-pie-chart"></i>
-        <h4>Analystics</h4>
-        <p>Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam.</p>
-      </div>
-      <div class="col-md-3 col-sm-6 service"> <i class="fa fa-line-chart"></i>
-        <h4>Marketing</h4>
-        <p>Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque.</p>
-      </div>
-    </div>
-    -->
-
-
-    <div class="space"></div>
-     
-     <!--
-
-    <div class="row">
-      <div class="col-md-3 col-sm-6 service"> <i class="fa fa-shopping-cart"></i>
-        <h4>eCommerce</h4>
-        <p>Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam.</p>
-      </div>
-      <div class="col-md-3 col-sm-6 service"> <i class="fa fa-file-text-o"></i>
-        <h4>Content Development</h4>
-        <p>Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque.</p>
-      </div>
-      <div class="col-md-3 col-sm-6 service"> <i class="fa fa-rocket"></i>
-        <h4>Branding</h4>
-        <p>Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam.</p>
-      </div>
-      <div class="col-md-3 col-sm-6 service"> <i class="fa fa-camera"></i>
-        <h4>Video & Photography</h4>
-        <p>Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque.</p>
-      </div>
-    </div>
-
-
-    -->
-
   </div>
 
 
@@ -202,106 +171,80 @@ En la actualidad se deben promover el desarrollo de proyectos productivos a part
       <div class="clearfix"></div>
     </div>
     <div class="categories">
-      <ul class="cat">
-        <li>
-          <ol class="type">
-            <li><a href="#" data-filter="*" class="active">All</a></li>
-            <li><a href="#" data-filter=".web">Web Design</a></li>
-            <li><a href="#" data-filter=".app">App Development</a></li>
-            <li><a href="#" data-filter=".branding">Branding</a></li>
-          </ol>
-        </li>
-      </ul>
       <div class="clearfix"></div>
     </div>
     <div class="row">
       <div class="portfolio-items">
         <div class="col-sm-6 col-md-3 col-lg-3 web">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio/IMG_8550.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/01.jpg" rel="prettyPhoto">
               <div class="hover-text">
-                <h4>Project Title</h4>
-                <small>Web Design</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/IMG_8550.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/01.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 app">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio/IMG_8552.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/02.jpg" rel="prettyPhoto">
               <div class="hover-text">
-                <h4>Project Title</h4>
-                <small>App Development</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/IMG_8552.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/02.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 web">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio/IMG_8566.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/03.jpg" rel="prettyPhoto">
               <div class="hover-text">
-                <h4>Project Title</h4>
-                <small>Web Design</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/IMG_8566.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/03.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 web">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio/IMG_8574.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/04.jpg" rel="prettyPhoto">
               <div class="hover-text">
-                <h4>Project Title</h4>
-                <small>Web Design</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/IMG_8574.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/04.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 app">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio//IMG_8593.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/05.jpg" rel="prettyPhoto">
               <div class="hover-text">
-                <h4>Project Title</h4>
-                <small>App Development</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/IMG_8593.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/05.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 branding">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio//IMG_8596.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/06.jpg" rel="prettyPhoto">
               <div class="hover-text">
-                <h4>Project Title</h4>
-                <small>Branding</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/IMG_8596.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/06.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 branding app">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio//IMG_8602.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/07.jpg" rel="prettyPhoto">
               <div class="hover-text">
-                <h4>Project Title</h4>
-                <small>App Development, Branding</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio//IMG_8602.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/07.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 web">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="resources/main/img/portfolio/IMG_8610.jpg" rel="prettyPhoto">
+            <div class="hover-bg"> <a href="resources/08.jpg" rel="prettyPhoto">
               <div class="hover-text">
-                <h4>Project Title</h4>
-                <small>Web Design</small>
                 <div class="clearfix"></div>
               </div>
-              <img src="resources/main/img/portfolio/IMG_8610.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="resources/08.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
       </div>
@@ -309,50 +252,6 @@ En la actualidad se deben promover el desarrollo de proyectos productivos a part
   </div>
 </div>
 
-
-<!-- Team Section -->
-<div id="team-section">
-  <div class="container">
-    <div class="section-title">
-      <h2>Meet the Team</h2>
-      <hr>
-    </div>
-    <div id="row">
-      <div class="col-md-3 col-sm-6 team">
-        <div class="thumbnail"> <img src="resources/main/img/team/01.jpg" alt="..." class="team-img">
-          <div class="caption">
-            <h3>John Doe</h3>
-            <p>Founder</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 team">
-        <div class="thumbnail"> <img src="resources/main/img/team/02.jpg" alt="..." class="team-img">
-          <div class="caption">
-            <h3>Mike Doe</h3>
-            <p>Web Designer</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 team">
-        <div class="thumbnail"> <img src="resources/main/img/team/03.jpg" alt="..." class="team-img">
-          <div class="caption">
-            <h3>Jane Doe</h3>
-            <p>Creative Director</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 team">
-        <div class="thumbnail"> <img src="resources/main/img/team/04.jpg" alt="..." class="team-img">
-          <div class="caption">
-            <h3>Larry Show</h3>
-            <p>Project Manager</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 <!-- Contact Section -->
 <div id="contact-section">
   <div class="container">
@@ -372,16 +271,16 @@ En la actualidad se deben promover el desarrollo de proyectos productivos a part
     </div>
     <div class="col-md-8">
       <h4>Inscribir participante</h4>
-      <form:form action="guardarEstudiante" method="post" modelAttribute="estudiante">
+      <form:form id="formEst" action="guardarEstudiante" method="post" modelAttribute="estudiante">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-               <form:input path="codigo" type="text" class="form-control" placeholder="Codigo" required="required"/>     <p class="help-block text-danger"></p>              
+               <form:input path="codigo" id="codigo" type="text" class="form-control" placeholder="Codigo" required="required"/>     <p class="help-block text-danger"></p>              
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <form:input path="nombre" class="form-control" placeholder="Nombre"/>
+              <form:input path="nombre" id="nombre" class="form-control" placeholder="Nombre"/>
               <p class="help-block text-danger"></p>
             </div>
           </div>
@@ -390,13 +289,13 @@ En la actualidad se deben promover el desarrollo de proyectos productivos a part
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <form:input path="apellido" class="form-control" placeholder="Apellidos"/>                    
+              <form:input path="apellido" id = "apellido" class="form-control" placeholder="Apellidos"/>                    
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <form:input type="email" path="email" class="form-control" placeholder="Email"/>
+              <form:input type="email" path="email" id = "email" class="form-control" placeholder="Email"/>
               <p class="help-block text-danger"></p>
             </div>
           </div>
@@ -405,23 +304,35 @@ En la actualidad se deben promover el desarrollo de proyectos productivos a part
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <form:input type="tel"  path="telefono" class="form-control" placeholder="Celular"/>
+              <form:input type="tel"  path="telefono" id="telefono" class="form-control" placeholder="Celular"/>
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <form:input path="semestre" class="form-control" placeholder="Semestre" />
+              <form:input path="semestre" id="semestre" class="form-control" placeholder="Semestre" />
               <p class="help-block text-danger"></p>
             </div>
           </div>
         </div>        
-        <div class="form-group">
-              <form:password path="contrasena" class="form-control" placeholder="Contraseña"/>
-              <p class="help-block text-danger"></p>
-        </div>
 
-        <button type="submit" class="btn btn-default" onclick="">Registrar solicitud</button>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <form:password path="contrasena" id="contrasena" class="form-control" placeholder="Contraseña"/>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+             <!-- <form:password path="contrasena" id="contrasena2" class="form-control" placeholder="Repita la contraseña"/> -->
+             <input id="contrasena2" type="password" name="contrasena2" class="form-control" placeholder="Repita la contraseña">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+        </div>    
+
+        <button id="submit" type="submit" class="btn btn-default">Registrar solicitud</button>
       </form:form>
     </div>
   </div>
@@ -455,6 +366,9 @@ En la actualidad se deben promover el desarrollo de proyectos productivos a part
 <script type="text/javascript" src="resources/main/js/jquery.prettyPhoto.js"></script> 
 <script type="text/javascript" src="resources/main/js/jquery.isotope.js"></script> 
 <script type="text/javascript" src="resources/main/js/jqBootstrapValidation.js"></script> 
+<script type="text/javascript" src="resources/main/js/estudiante.js"></script> 
+
+
 
 <!-- Javascripts
     ================================================== --> 
