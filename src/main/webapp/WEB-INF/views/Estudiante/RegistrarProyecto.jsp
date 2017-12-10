@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
@@ -40,7 +41,7 @@
     <div class="wrapper">
       
       <header class="main-header">
-       <a href="${contextPath}/ufps-feria/indexEstudiante?t=<%=t%>" class="logo"><b>Feria De Proyectos</b></a>
+       <a href="${contextPath}/indexEstudiante?t=<%=t%>" class="logo"><b>Feria De Proyectos</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -74,15 +75,15 @@
           <ul class="sidebar-menu">
             <li class="header">Opciones Del Estudiante</li>
             <li class="treeview">
-              <a href="${contextPath}/ufps-feria/registrarProyecto?t=<%=t%>">
+              <a href="${contextPath}/registrarProyecto?t=<%=t%>">
                 <i class="fa fa-pencil"></i><span> Registrar proyecto</span>
               </a>
             </li>     
             <li class="treeview">
-              <a href="${contextPath}/ufps-feria/verProyectos?t=<%=t%>">
+              <a href="${contextPath}/verProyectos?t=<%=t%>">
                 <i class="fa fa-pencil"></i><span>Ver Proyectos Registrados</span>
               </a>
-              <a href="${contextPath}/ufps-feria/logout?t=<%=t%>">
+              <a href="${contextPath}/logout?t=<%=t%>">
                 <i class="fa fa-power-off"></i><span> Salir</span>
               </a>
             </li>       
@@ -112,14 +113,33 @@
             </div><!--/.col (left) -->
                       
             <div class="col-md-12">
+
+
+              <c:if test="${not empty result}">
+                <div class="alert alert-success alert-dismissable">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      <h4>  <i class="icon fa fa-check"></i> Proyecto registrado con éxito.</h4>
+                      El proyecto ha sido registrado con éxito
+                </div>
+              </c:if>
+
+              <c:if test="${not empty wrong}">
+                  <div class="alert alert-warning alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-warning"></i> Debes llenar todos los campos.</h4>
+                    Para registrar un proyecto es necesaro llenar todos los campos.
+                  </div>
+              </c:if>
+
               <!-- general form elements disabled -->
               <div class="box box-warning">
                 <div class="box-header">
                   <h3 class="box-title">A continuación puede registrar el proyecto.</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
+                
 
-                <form:form action="guardarProyecto" id="formRP" commandName="pro" method="post" enctype="multipart/form-data" >
+                <form:form id="formRP" action="guardarProyecto" commandName="pro" method="post" enctype="multipart/form-data" >
                     <!-- text input -->
 
                     <form:input path="cod" type="hidden" value="<%= codigo %>"/>
@@ -199,6 +219,6 @@
     <!-- AdminLTE for demo purposes -->
     <script src="resources/js/demo.js" type="text/javascript"></script>
     <!-- Log -->
-    <script src="resources/main/js/rproyecto.js" type="text/javascript"></script>
+    <script src="resources/main/js/rproyecto.js" type="text/javascript"></script> 
   </body>
 </html>

@@ -34,6 +34,7 @@
         response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
        String t =String.valueOf(request.getAttribute("token"));
        String nombre = (String)request.getSession().getAttribute("user");
+       int codigo = Integer.parseInt(request.getSession().getAttribute("codigo").toString());
     %>
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -78,7 +79,7 @@
             <li class="header">Opciones del Evaluador</li>
 
            <li class="treeview">
-              <a href="${contextPath}/ufps-feria/evaluarProyectos?t=<%=t%>">
+              <a href="${contextPath}/ufps-feria/evaluarProyectos?t=<%=t%>&cod=<%=codigo%>">
                 <i class="fa fa-check-square-o"></i><span>Evaluar proyectos</span>
               </a>
               <a href="${contextPath}/ufps-feria/visualizarProyectos?t=<%=t%>">

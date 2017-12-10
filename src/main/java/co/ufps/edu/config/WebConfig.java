@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "co.ufps.edu.controller" })
+@ComponentScan(basePackages = { "co.ufps.edu.*" })
 public class WebConfig extends WebMvcConfigurerAdapter {
 	// Bean name must be "multipartResolver", by default Spring uses method name as
 	// bean name.

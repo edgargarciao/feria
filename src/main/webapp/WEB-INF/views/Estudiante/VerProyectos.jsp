@@ -1,5 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
@@ -35,11 +36,11 @@
        String t =String.valueOf(request.getAttribute("token"));
        String nombre = (String)request.getSession().getAttribute("user");
   %>
-  <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+  
     <div class="wrapper">
       
       <header class="main-header">
-       <a href="${contextPath}/ufps-feria/indexEstudiante?t=<%=t%>" class="logo"><b>Feria De Proyectos</b></a>
+       <a href="http://localhost:8080/ufps-feria/indexEstudiante?t=<%=t%>" class="logo"><b>Feria De Proyectos</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -73,16 +74,16 @@
           <ul class="sidebar-menu">
             <li class="header">Opciones Del Estudiante</li>
             <li class="treeview">
-              <a href="${contextPath}/ufps-feria/registrarProyecto?t=<%=t%>">
+              <a href="http://localhost:8080/ufps-feria/registrarProyecto?t=<%=t%>">
                 <i class="fa fa-pencil"></i><span> Registrar proyecto</span>
               </a>
 
-              <a href="${contextPath}/ufps-feria/verProyectos?t=<%=t%>">
+              <a href="http://localhost:8080/ufps-feria/verProyectos?t=<%=t%>">
                 <i class="fa fa-pencil"></i><span>Ver Proyectos Registrados</span>
               </a>
             </li>     
             <li class="treeview">
-                <a href="${contextPath}/ufps-feria/logout?t=<%=t%>">
+                <a href="http://localhost:8080/ufps-feria/logout?t=<%=t%>">
                 <i class="fa fa-power-off"></i><span> Salir</span>
               </a>
             </li>       
@@ -119,11 +120,37 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
 
-                <form:form action="guardarProyecto" commandName="pro" method="post" enctype="multipart/form-data" >
+
+              <table class="table table-hover">  
+                  <tr>
+                      <th>Id</th>
+                      <th>Titulo</th>
+                      <th>Resumen</th>
+                      <th>Docente Guia</th>
+                      <th>Linea</th>
+                      <th>Codigo Integrante 1</th>
+                      <th>Codigo Integrante 2</th>
+                      
+                  </tr>  
+                 <c:forEach var="emp" items="${list}">   
+                   <tr>  
+                       <td>${emp.codp}</td>  
+                       <td>${emp.titulo}</td>  
+                       <td>${emp.resumen}</td>  
+                       <td>${emp.docenteGuia}</td>
+                       <td>${emp.linea}</td>
+                       <td>${emp.codigoEstudiante1}</td>
+                       <td>${emp.codigoEstudiante2}</td>
                     
+                   </tr>  
+                 </c:forEach>  
+                 
+              </table>  
 
 
-                </form:form>
+
+
+
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!--/.col (right) -->
@@ -143,7 +170,6 @@
     <script src="resources/js/app.min.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="resources/js/demo.js" type="text/javascript"></script>
-    <!-- Log -->
-    <script src="resources/js/log.js" type="text/javascript"></script>
+  
   </body>
 </html>

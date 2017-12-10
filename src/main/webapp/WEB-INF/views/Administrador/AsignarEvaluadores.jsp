@@ -109,7 +109,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-             REGISTRAR EVALUADORES
+             ASIGNAR EVALUADORES
            
           </h1>
          
@@ -123,61 +123,52 @@
               <!-- general form elements -->
 
 
-              <!-- Input addon -->
-               <c:if test="${not empty result}">
-                <div class="alert alert-success alert-dismissable">
-                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      <h4>  <i class="icon fa fa-check"></i> Proyecto registrado con éxito.</h4>
-                      El proyecto ha sido registrado con éxito
-                </div>
-              </c:if>
-
               <c:if test="${not empty wrong}">
                   <div class="alert alert-warning alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h4><i class="icon fa fa-warning"></i> Debes llenar todos los campos.</h4>
-                    Para registrar un proyecto es necesaro llenar todos los campos.
+                    <h4><i class="icon fa fa-warning"></i> Debes llenar los campos correctamente.</h4>
+                    Debes seleccionar como mínimo un evaluador y no pueden haber evaluadores repetidos.
                   </div>
               </c:if>
 
               <div class="box box-info">
                 <div class="box-header">
-                  <h3 class="box-title">A continuacion puede registrar evaluadores</h3>
+                  <h3 class="box-title">A continuacion puede asignar evaluadores al proyecto seleccionado.</h3>
               </div>
             <div class="box-body">
 
-                <form:form id="formEst" action="guardarEvaluadores" method="post" modelAttribute="evaluador">
+                <form:form id="formEst" action="asginarEvaluadoresProyecto" method="post" modelAttribute="asignacion">
                 
                     <input type="hidden" name="t" id="t"  value="<%= t %>" />
+                    <input type="hidden" name="codigoP" id="codigoP"  value="${idProyecto}" />
 
                     <div class="form-group">
                       <label class="form-control-label">Código</label>
-                      <form:input id="codigo" path="codigo" class="form-control" placeholder="1151007"/>
-                    </div>
 
+                      <form:input path="codigoProyecto" class="form-control" value = "${idProyecto}" disabled="true"/>
+                    </div>
 
                     <div class="form-group">
-                      <label class="form-control-label">Nombre</label>
-                      <form:input id="nombre" path="nombre" class="form-control" placeholder="juan Andres"/>
+                      <form:select path="evaluador1" class="form-control">
+                        <form:option value="" label="Seleccione el docente" />
+                        <form:options items="${evaluadores}"/>
+                      </form:select>
                     </div>
-
 
                     <div class="form-group">
-                      <label class="form-control-label">Apellidos</label>
-                      <form:input id="apellido" path="apellido" class="form-control" placeholder="Pineda Jaimes"/>
+                      <form:select path="evaluador2" class="form-control">
+                        <form:option value="" label="Seleccione el docente" />
+                        <form:options items="${evaluadores}"/>
+                      </form:select>
                     </div>
 
-                   <div class="form-group">
-                      <label class="form-control-label">email</label>
-                      <form:input id="email" path="email" class="form-control" placeholder="juan.pineda@gmail.com"/>
+                    <div class="form-group">
+                      <form:select path="evaluador3" class="form-control">
+                        <form:option value="" label="Seleccione el docente" />
+                        <form:options items="${evaluadores}"/>
+                      </form:select>
                     </div>
 
-                   <div class="form-group">
-                      <label class="form-control-label">Contraseña</label>
-                      <form:password id="contraseña" path="contraseña" class="form-control" placeholder="Password1234"/>
-                    </div>
-                    
-                     <form:checkboxes element="span class='form-check-input'" items="${ListaLineas}" path="lineas"/>
 
                   <div class="box-footer">
                     <button id="submit" type="submit" class="btn btn-primary">Registrar</button>

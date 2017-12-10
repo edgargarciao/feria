@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,18 +31,23 @@ public class LogController {
 
 	private LoginDao loginDao = new LoginDao();
 
+	@ModelAttribute("estudiante")
+	public Estudiante getEstudiante() {
+		return new Estudiante();
+	}
+
 	@GetMapping("/logout") // Base
 	@ResponseBody
-	public ModelAndView  logout(@RequestParam("t") String token,HttpServletRequest request ) {	
-		getLogOut(token,request);
+	public ModelAndView logout(@RequestParam("t") String token, HttpServletRequest request) {
+		getLogOut(token, request);
 		return new ModelAndView("index"); // Nombre del archivo jsp
 	}
-	
+
 	@GetMapping("/login") // Base
 	public String index() {
 		return "Login"; // Nombre del archivo jsp
 	}
-	
+
 	@GetMapping("/") // Base
 	public String main() {
 		return "index"; // Nombre del archivo jsp
@@ -53,38 +59,39 @@ public class LogController {
 	}
 
 	@PostMapping("/autenticar")
-	public String authenticateUser(@ModelAttribute("login") Login login, Model model,HttpServletRequest request) {
+	public String authenticateUser(@ModelAttribute("login") Login login, Model model, HttpServletRequest request) {
 
-		String resultado = loginDao.authenticate(login.getCodigo(), login.getContraseña());
-		
-		if (!resultado.isEmpty()) {
-			 String jwt = jwtUtil.generateToken(resultado,
-			 String.valueOf(login.getCodigo()));
-			 request.setAttribute("token", jwt);
-			 request.getSession().setAttribute("codigo", login.getCodigo());
-			 HttpSession session = request.getSession();			 
-			 template.opsForValue().set("SESSION:" + login.getCodigo(), jwt);
-			 session.setAttribute("codigo", login.getCodigo());
-			if (resultado.equals("estudiante")) {
-				session.setAttribute("user", "Estudiante");
-				return "Estudiante/indexEstudiante";
-			} else if (resultado.equals("evaluador")) {
-				session.setAttribute("user", "Evaluador");
-				return "Evaluador/indexEvaluador";
-			} else if (resultado.equals("admin")) {
-				session.setAttribute("user", "Administrador");
-				return "Administrador/indexAdmin";
+		if(!StringUtils.isEmpty(login.getCodigo()) && !StringUtils.isEmpty(login.getContraseña())) {
+			String resultado = loginDao.authenticate(Long.parseLong(login.getCodigo()), login.getContraseña());
+			
+			if (!resultado.isEmpty()) {
+				String jwt = jwtUtil.generateToken(resultado, String.valueOf(login.getCodigo()));
+				request.setAttribute("token", jwt);
+				request.getSession().setAttribute("codigo", login.getCodigo());
+				HttpSession session = request.getSession();
+				template.opsForValue().set("SESSION:" + login.getCodigo(), jwt);
+				session.setAttribute("codigo", login.getCodigo());
+				if (resultado.equals("estudiante")) {
+					session.setAttribute("user", "Estudiante");
+					return "Estudiante/indexEstudiante";
+				} else if (resultado.equals("evaluador")) {
+					session.setAttribute("user", "Evaluador");
+					return "Evaluador/indexEvaluador";
+				} else if (resultado.equals("admin")) {
+					session.setAttribute("user", "Administrador");
+					return "Administrador/indexAdmin";
+				}
+			}else {
+				model.addAttribute("wrong", "Usuario o contraseña incorrectos.");	
 			}
+			return "Login";
+		}else {
+			model.addAttribute("wrong", "El usuario y la contraseña no pueden ser nulos.");	
+			return "Login";
 		}
-
-		System.out.println("coming in controller    " + login.getCodigo() + " : " + login.getContraseña());		
-
-		model.addAttribute("message", "Hello Spring MVC Framework!");
-		
-		return "indexAdmin";
 	}
-	
-	public void validarSesion(String token, HttpServletRequest request) {		
+
+	public void validarSesion(String token, HttpServletRequest request) {
 		int codigo = jwtUtil.parseToken(token);
 		if (token == null || token.isEmpty() || codigo == 0
 				|| template.opsForValue().get("SESSION:" + codigo) == null) {
@@ -92,14 +99,13 @@ public class LogController {
 		}
 		request.setAttribute("token", token);
 		request.getSession().setAttribute("codigo", codigo);
-		
-		
+
 	}
-	
+
 	private void getLogOut(String token, HttpServletRequest request) {
 		request.getSession().invalidate();
 		int codigo = jwtUtil.parseToken(token);
-		template.delete("SESSION:" + codigo);		
+		template.delete("SESSION:" + codigo);
 	}
 
 }

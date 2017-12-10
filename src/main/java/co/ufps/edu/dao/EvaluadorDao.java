@@ -1,7 +1,11 @@
 package co.ufps.edu.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.util.StringUtils;
 
 import co.ufps.edu.bd.SpringDbMgr;
 
@@ -14,14 +18,14 @@ public class EvaluadorDao {
 
 		SpringDbMgr springDbMgr = new SpringDbMgr();
 
-		if (esCodigoRepetido(e.getCodigo(), springDbMgr)) {
+		if (esCodigoRepetido(Integer.parseInt(e.getCodigo()), springDbMgr)) {
 			return false;
 		}
 
 		// Agrego los datos del registro (nombreColumna/Valor)
 
 		MapSqlParameterSource map = new MapSqlParameterSource();
-		map.addValue("codigo", e.getCodigo());
+		map.addValue("codigo", Integer.parseInt(e.getCodigo()));
 		map.addValue("nombre", e.getNombre());
 		map.addValue("apellido", e.getApellido());
 		map.addValue("correo", e.getEmail());
@@ -31,7 +35,7 @@ public class EvaluadorDao {
 				+ "values(:codigo,:nombre,:apellido,:correo,:contraseña)";
 
 		int result = springDbMgr.executeDml(query, map);
-		insertarLineasAEvaluador(e.getCodigo(),e.getLineas());
+		insertarLineasAEvaluador(Integer.parseInt(e.getCodigo()),e.getLineas());
 		return (result == 1);
 	}
 
@@ -65,6 +69,53 @@ public class EvaluadorDao {
 		SqlRowSet sqlRowSet = springDbMgr.executeQuery("select codigo from estudiante where codigo = :code",
 				mapSqlParameterSource);
 		return (sqlRowSet.next());
+	}
+
+	public Map<String, String> getEvaluadoresPorProyecto(int idProyecto) {
+		Map<String, String> map = new HashMap<>();
+		SpringDbMgr springDbMgr = new SpringDbMgr();
+		MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+		mapSqlParameterSource.addValue("code", idProyecto);
+		SqlRowSet sqlRowSet = springDbMgr.executeQuery("SELECT e.codigo,e.nombre \n" + 
+				"  FROM evaluador e,evaluador_linea el, proyecto p\n" + 
+				" WHERE e.codigo = el.idevaluador\n" + 
+				"   AND el.idlinea = p.codigoLinea\n" + 
+				"   AND p.id_proyecto = :code",mapSqlParameterSource);
+
+		while (sqlRowSet.next()) {
+			map.put(sqlRowSet.getString("codigo"), sqlRowSet.getString("nombre"));
+		}
+		return map;
+	}
+
+	public void asignarEvaluador(Asignacion asignacion) {
+		if(!StringUtils.isEmpty(asignacion.getEvaluador1())) {
+			asignarEvaluadorAProyecto(asignacion.getCodigoProyecto(),asignacion.getEvaluador1());
+		}
+		if(!StringUtils.isEmpty(asignacion.getEvaluador2())) {
+			asignarEvaluadorAProyecto(asignacion.getCodigoProyecto(),asignacion.getEvaluador2());
+		}
+		if(!StringUtils.isEmpty(asignacion.getEvaluador3())) {
+			asignarEvaluadorAProyecto(asignacion.getCodigoProyecto(),asignacion.getEvaluador3());
+		}
+	}
+
+	private void asignarEvaluadorAProyecto(String codigoProyecto, String evaluador) {
+		SpringDbMgr springDbMgr = new SpringDbMgr();
+		MapSqlParameterSource map = new MapSqlParameterSource();
+		map.addValue("id_evaluador", Integer.parseInt(evaluador));
+		map.addValue("id_proyecto", Integer.parseInt(codigoProyecto));
+		java.util.Date dt = new java.util.Date();
+		java.text.SimpleDateFormat sdf = 
+		     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String currentTime = sdf.format(dt);
+		map.addValue("fecha_asignacion", currentTime);
+
+		String query = "insert into proyecto_evaluador(id_evaluador,id_proyecto,fecha_asignacion) "
+				+ "values(:id_evaluador,:id_proyecto,:fecha_asignacion)";
+
+		int result = springDbMgr.executeDml(query, map);
+		
 	}
 
 }

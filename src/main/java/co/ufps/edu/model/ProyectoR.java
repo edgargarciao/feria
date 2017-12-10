@@ -2,16 +2,15 @@ package co.ufps.edu.model;
 
 import javax.servlet.http.Part;
 
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-public class Proyecto {
+public class ProyectoR {
 
-	private String titulo, resumen, linea, docenteGuia;
-	private int cod, codigoEstudiante1, codigoEstudiante2;
-	private MultipartFile archivo;
+	private String titulo, resumen, linea,docenteGuia,nomEst;
+	private int codp,cod,codigoEstudiante1, codigoEstudiante2;
+	private MultipartFile  archivo;
 
-	public Proyecto() {
+	public ProyectoR() {
 	}
 
 	public String getTitulo() {
@@ -70,21 +69,39 @@ public class Proyecto {
 		this.archivo = archivo;
 	}
 
+
+
 	public int getCod() {
 		return cod;
 	}
+
+
 
 	public void setCod(int cod) {
 		this.cod = cod;
 	}
 
-	public boolean isValidoParaRegistrar(MultipartFile file) {
-		if (StringUtils.isEmpty(this.titulo) || StringUtils.isEmpty(this.resumen) || this.cod == 0 || this.codigoEstudiante1 == 0
-				|| this.codigoEstudiante2 == 0 || StringUtils.isEmpty(this.linea)
-				|| StringUtils.isEmpty(this.docenteGuia) || StringUtils.isEmpty(file.getOriginalFilename())) {
-			return false;
-		}
-
-		return true;
+	public int getCodp() {
+		return codp;
 	}
+
+	public void setCodp(int codp) {
+		this.codp = codp;
+	}
+
+	public String getNomEst() {
+		return nomEst;
+	}
+
+	public void setNomEst(String nomEst) {
+		this.nomEst = nomEst;
+	}
+
+	@Override
+	public String toString() {
+		return "ProyectoR [titulo=" + titulo + ", resumen=" + resumen + ", linea=" + linea + ", docenteGuia="
+				+ docenteGuia + ", nomEst=" + nomEst + ", codp=" + codp + ", cod=" + cod + ", codigoEstudiante1="
+				+ codigoEstudiante1 + ", codigoEstudiante2=" + codigoEstudiante2 + ", archivo=" + archivo + "]";
+	}
+
 }

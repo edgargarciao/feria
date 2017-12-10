@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +25,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="login-page">
+  <body background="resources/fondo.jpg" >
     <div class="login-box">
       <div class="login-logo">
         <a><b>LOGIN</b>
@@ -32,6 +33,13 @@
       <div class="login-box-body">
         <p class="login-box-msg">Inicia sesion </p>
 
+            <c:if test="${not empty wrong}">
+                  <div class="alert alert-warning alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-warning"></i> Error</h4>
+                    <c:out value='${wrong}' />
+                  </div>
+              </c:if>
          <form:form action="autenticar" method="post" modelAttribute="login">
           <div class="form-group has-feedback">
             <form:input path="codigo" type="text" class="form-control" placeholder="1165409"/>                       
@@ -56,7 +64,7 @@
 
             </div><!-- /.col -->
                 <div class="col-xs-15">
-                  <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                  <button type="submit" class="btn btn-success btn-block btn-flat">Sign In</button>
                 </div><!-- /.col -->
             </div>
 

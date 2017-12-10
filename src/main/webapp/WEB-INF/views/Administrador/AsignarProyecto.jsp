@@ -1,3 +1,9 @@
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
 
 <html>
@@ -35,7 +41,7 @@
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="${contextPath}/ufps-feria/indexAdmin?t=<%=t%>" class="logo"><b>Feria De Proyectos</b></a>
+        <a href="${contextPath}/indexAdmin?t=<%=t%>" class="logo"><b>Feria De Proyectos</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -71,22 +77,22 @@
             <li class="header">Opciones Del Administrador</li>
 
             <li class="treeview">
-              <a href="${contextPath}/ufps-feria/registrarEvaluador?t=<%=t%>">
+              <a href="${contextPath}/registrarEvaluador?t=<%=t%>">
                 <i class="fa fa-pencil"></i><span> Registrar Evaluador</span>
               </a>
-              <a href="${contextPath}/ufps-feria/asignarProyectos?t=<%=t%>">
+              <a href="${contextPath}/asignarProyectos?t=<%=t%>">
                 <i class="fa fa-share-square-o"></i> <span> Asignar Proyecto</span>
               </a>
-              <a href="${contextPath}/ufps-feria/calificarProyectos?t=<%=t%>">
+              <a href="${contextPath}/calificarProyectos?t=<%=t%>">
                 <i class="fa fa-check-square-o"></i> <span> Calificar Proyecto</span>
               </a>
-              <a href="${contextPath}/ufps-feria/registrarLinea?t=<%=t%>">
+              <a href="${contextPath}/registrarLinea?t=<%=t%>">
                 <i class="fa fa-list"></i> <span> Registrar Lineas</span>
               </a>
-              <a href="${contextPath}/ufps-feria/asignarHorarios?t=<%=t%>">
+              <a href="${contextPath}/asignarHorarios?t=<%=t%>">
                 <i class="fa fa-calendar"></i> <span> Asignar Horario</span>
               </a>
-              <a href="${contextPath}/ufps-feria/logout?t=<%=t%>">
+              <a href="${contextPath}/logout?t=<%=t%>">
                 <i class="fa fa-power-off"></i><span> Salir</span>
               </a>
             </li>
@@ -115,29 +121,56 @@
               <!-- general form elements -->
 
               <!-- Input addon -->
+               <c:if test="${not empty result}">
+                <div class="alert alert-success alert-dismissable">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      <h4>  <i class="icon fa fa-check"></i> Evaluadores asignados con éxito.</h4>
+                      Los evaluadores han sido asignados con éxito.
+                </div>
+              </c:if>
+
+              <!-- Input addon -->
 
               <div class="box box-info">
                 <div class="box-header">
-                  <h3 class="box-title">A continuacion puede asignar un proyecto a un evaluador.</h3>
+                  <h3 class="box-title">A continuación puede asignar un proyecto a un evaluador.</h3>
                 </div>
 
-                <form:form action="guardarEvaluadores" method="post" modelAttribute="evaluador">
-                <div class="box-body">
 
-                 <div class="form-group">
-                      <label for="exampleInputEmail1">Codigo</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  <div class="box-body">
+
+                      <table class="table table-hover">  
+                          <tr>
+                              <th>Id</th>
+                              <th>Estudiante líder</th>
+                              <th>Titulo</th>
+                              <th>Resumen</th>
+                              <th>Docente Guia</th>
+                              <th>Linea</th>
+                              <th>Codigo Integrante 1</th>
+                              <th>Codigo Integrante 2</th>
+                              <th>Acción</th>
+                          </tr>  
+                         <c:forEach var="emp" items="${list}">   
+                           <tr>  
+                               <td>${emp.codp}</td>  
+                               <td>${emp.nomEst}</td>  
+                               <td>${emp.titulo}</td>  
+                               <td>${emp.resumen}</td>  
+                               <td>${emp.docenteGuia}</td>
+                               <td>${emp.linea}</td>
+                               <td>${emp.codigoEstudiante1}</td>
+                               <td>${emp.codigoEstudiante2}</td>
+                               <td> <a href="${contextPath}/asignarEvaluadores?id=${emp.codp}&t=<%=t%>"><button class="btn btn-primary">Asignar evaluadores</button></a></td>
+                            
+                              <!-- <button type="submit" class="btn btn-primary">Asignar evaluadores</button> -->
+                           </tr>  
+                         </c:forEach>  
+                         
+                      </table>  
                   </div>
 
-                  </div>
 
-                  <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Asignar proyecto</button>
-
-                  </div>
-
-
-             </form:form>
 
                
                 </div><!-- /.box-body -->
@@ -159,11 +192,11 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.3 -->
-    <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- FastClick -->
-    <script src='../../plugins/fastclick/fastclick.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js' type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="resources/js/app.min.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->

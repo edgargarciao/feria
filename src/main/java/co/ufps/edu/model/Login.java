@@ -2,22 +2,17 @@ package co.ufps.edu.model;
 
 public class Login {
 	
-	private int codigo;
+	private String codigo;
 	private String contraseña;
 	
 	public Login() {
 	}
 
-	public Login(int codigo, String contraseña) {
-		this.codigo = codigo;
-		this.contraseña = contraseña;
-	}
-
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 
