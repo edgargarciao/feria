@@ -22,7 +22,7 @@ public class LineaController {
 
 	// Devuelve el jsp
 	@GetMapping("/registrarLinea") // Path para el link
-	public String registration(@RequestParam("t") String token,HttpServletRequest request) {
+	public String registration(@RequestParam("t") String token, HttpServletRequest request) {
 		logController.validarSesion(token, request);
 		return "Administrador/RegistrarLineas";
 	}
@@ -33,8 +33,11 @@ public class LineaController {
 	}
 
 	@PostMapping("/guardarLinea")
-	public String guardarLinea(@ModelAttribute("linea") Linea linea, Model model) {
+	public String guardarLinea(@ModelAttribute("linea") Linea linea, Model model, @RequestParam("t") String token,
+			HttpServletRequest request) {
+		logController.validarSesion(token, request);
 		lineaDao.registrarLineas(linea);
+		model.addAttribute("result","Resultado exitoso.");
 		return "Administrador/RegistrarLineas";
 	}
 }

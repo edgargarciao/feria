@@ -3,7 +3,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-
 <!DOCTYPE html>
 
 <html>
@@ -32,6 +31,17 @@
   </head>
   <body class="skin-blue">
 
+  <script type="text/javascript">
+    function actualizarResultado(){
+      var promedio = 0;
+      for(var i = 1;i<=9;i++){
+        promedio += (  parseFloat($("#calificacion"+i).val()) * $("#valoracion"+i).val() / 100);
+      }
+
+      $('#calificacion10').attr('value', promedio)
+      
+    }
+  </script>
     <%
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
         response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -155,21 +165,23 @@
                                <td width="39%" align="justify">1. Creatividad y Diseño: el evaluador debe determinar 
                                                         si presenta una organización y diseño que faciliten la 
                                                         presentación del proyecto de aula.</td>  
-                               <td width="8%" align="center"><form:input path="valoracion1" id="valoracion1" class="form-control" value="10" disabled = "true"/></td> 
+                               <td width="8%" align="center">
+                               <form:input path="valoracion1" id="valoracion1" class="form-control" readonly="true" value="10" />
+                                                
                                <td width="8%">
-                                  <form:input path="calificacion1" id="calificacion1" class="form-control" min="0" max="5.0"/>
+                                  <form:input path="calificacion1" id="calificacion1" class="form-control" type="number" min="0" max="5.0" step="0.01" required="true" onchange="actualizarResultado()"/>
                                 </td>  
-                               <td width="45%" align="center"><form:textarea path="observacion1" class="form-control" placeholder=""/></td>
+                               <td width="45%" align="center"><form:textarea path="observacion1" class="form-control" placeholder="" required ="true"/></td>
                             
                            </tr>  
 
                             <tr>  
                                <td width="39%" align="justify">2.Puntualidad y Responsabilidad: Todos los participantes  deben  estar    presentes en la evaluación</td>  
-                               <td width="8%" align="center"><form:input path="valoracion2" id="valoracion2" class="form-control" value="10" disabled = "true"/></td> 
+                               <td width="8%" align="center"><input name="valoracion2" id="valoracion2" class="form-control" value="10" readonly="true" /></td> 
                                <td width="8%">
-                                  <form:input path="calificacion2" id="calificacion2" class="form-control" min="0" max="5.0"/>
+                                  <form:input path="calificacion2" id="calificacion2" class="form-control" type="number" min="0" max="5.0" step="0.01" required ="true" onchange="actualizarResultado()"/>
                                 </td>  
-                               <td width="45%" align="center"><form:textarea path="observacion2" class="form-control" placeholder=""/></td>                  
+                               <td width="45%" align="center"><form:textarea path="observacion2" class="form-control" required ="true"/></td>                  
                            </tr>  
                      </table>
 
@@ -183,68 +195,68 @@
                           </tr>  
                             <tr>  
                                <td width="39%" align="justify">1. Pertinencia: adecuación de los objetivos a las necesidades de la asignatura impartida </td>  
-                               <td width="8%" align="center"><form:input path="valoracion3" id="valoracion3" class="form-control" value="10" disabled = "true"/></td> 
+                               <td width="8%" align="center"><input name="valoracion3" id="valoracion3"  class="form-control" value="10" readonly="true" /></td> 
                                <td width="8%">
-                                  <form:input path="calificacion3" id="calificacion3" class="form-control" min="0" max="5.0"/>
+                                  <form:input path="calificacion3" id="calificacion3" class="form-control" type="number" min="0" max="5.0" step="0.01" required ="true" onchange="actualizarResultado()"/>
                                 </td>  
-                               <td width="45%" align="center"><form:textarea path="observacion3" class="form-control" placeholder=""/></td>                   
+                               <td width="45%" align="center"><form:textarea path="observacion3" class="form-control" required ="true"/></td>                   
                            </tr>      
 
                             <tr>  
                                <td width="39%" align="justify">2.Participación: Se evidencia la participación del docente en el seguimiento al proyecto de aula. </td>  
-                               <td width="8%" align="center"><form:input path="valoracion4" id="valoracion4" class="form-control" value="10" disabled = "true"/></td> 
+                               <td width="8%" align="center"><input name="valoracion4" id="valoracion4" class="form-control" value="10" readonly="true" /></td> 
                                <td width="8%">
-                                  <form:input path="calificacion4" id="calificacion4" class="form-control" min="0" max="5.0"/>
+                                  <form:input path="calificacion4" id="calificacion4" class="form-control" type="number" min="0" max="5.0" step="0.01" required ="true" onchange="actualizarResultado()"/>
                                 </td>  
-                               <td width="45%" align="center"><form:textarea path="observacion4" class="form-control" placeholder=""/></td>                      
+                               <td width="45%" align="center"><form:textarea path="observacion4" class="form-control" required ="true"/></td>                      
                            </tr> 
                             <tr>  
                                <td width="39%" align="justify">3.Utilidad: grado de aprovechamiento pedagógico de las experiencias y resultados del proyecto. </td>  
-                               <td width="8%" align="center"><form:input path="valoracion5" id="valoracion5" class="form-control" value="20" disabled = "true"/></td> 
+                               <td width="8%" align="center"><input name="valoracion5" id="valoracion5" class="form-control" value="20" readonly="true" /></td> 
                                <td width="8%">
-                                  <form:input path="calificacion5" id="calificacion5" class="form-control" min="0" max="5.0"/>
+                                  <form:input path="calificacion5" id="calificacion5" type="number" class="form-control" min="0" max="5.0" step="0.01" required ="true" onchange="actualizarResultado()"/>
                                 </td>  
-                               <td width="45%" align="center"><form:textarea path="observacion5" class="form-control" placeholder=""/></td>                    
+                               <td width="45%" align="center"><form:textarea path="observacion5" class="form-control" required ="true"/></td>                    
                            </tr>      
                             <tr>  
                                <td width="39%" align="justify">4. Programación: capacidad para organizar y racionalizar todos los pasos preestablecidos.</td>  
-                               <td width="8%" align="center"><form:input path="valoracion6" id="valoracion6" class="form-control" value="10" disabled = "true"/></td> 
+                               <td width="8%" align="center"><input name="valoracion6" id="valoracion6" class="form-control" value="10" readonly="true" /></td> 
                                <td width="8%">
-                                  <form:input path="calificacion1" id="calificacion6" class="form-control" min="0" max="5.0"/>
+                                  <form:input path="calificacion6" id="calificacion6" type="number" class="form-control" min="0" max="5.0" step="0.01" required ="true" onchange="actualizarResultado()"/>
                                 </td>  
-                               <td width="45%" align="center"><form:textarea path="observacion6" class="form-control" placeholder=""/></td>                 
+                               <td width="45%" align="center"><form:textarea path="observacion6" class="form-control" required ="true"/></td>                 
                            </tr>       
                             <tr>  
                                <td width="39%" align="justify">5. Metodología: El equipo de trabajo adopto una metodología de desarrollo del proyecto.</td>  
-                               <td width="8%" align="center"><form:input path="valoracion7" id="valoracion7" class="form-control" value="10" disabled = "true"/></td> 
+                               <td width="8%" align="center"><input name="valoracion7" id="valoracion7" class="form-control" value="10" readonly="true" /></td> 
                                <td width="8%">
-                                  <form:input path="calificacion7" id="calificacion7" class="form-control" min="0" max="5.0"/>
+                                  <form:input path="calificacion7" id="calificacion7" type="number" class="form-control" min="0" max="5.0" step="0.01" required ="true" onchange="actualizarResultado()"/>
                                 </td>  
-                               <td width="45%" align="center"><form:textarea path="observacion7" class="form-control" placeholder=""/></td>                     
+                               <td width="45%" align="center"><form:textarea path="observacion7" class="form-control" required ="true"/></td>                     
                            </tr>   
                            <tr>  
                                <td width="39%" align="justify">6. Gestión: ejecución de las acciones dentro del marco de una programación determinada.</td>  
-                               <td width="8%" align="center"><form:input path="valoracion8" id="valoracion8" class="form-control" value="10" disabled = "true"/></td> 
+                               <td width="8%" align="center"><input name="valoracion8" type="number" id="valoracion8" class="form-control" value="10" readonly="true" /></td> 
                                <td width="8%">
-                                  <form:input path="calificacion8" id="calificacion8" class="form-control" min="0" max="5.0"/>
+                                  <form:input path="calificacion8" id="calificacion8" class="form-control" min="0" max="5.0" step="0.01" required ="true" onchange="actualizarResultado()"/>
                                 </td>  
-                               <td width="45%" align="center"><form:textarea path="observacion8" class="form-control" placeholder=""/></td>
+                               <td width="45%" align="center"><form:textarea path="observacion8" class="form-control" required ="true"/></td>
                            </tr>                            
                            <tr>  
                                <td width="39%" align="justify">7. Trabajo en equipo: Se evidencia la  apropiación de la temática por parte de todos los miembros del equipo de trabajo.</td>  
-                               <td width="8%" align="center"><form:input path="valoracion9" id="valoracion9" class="form-control" value="10" disabled = "true"/></td> 
+                               <td width="8%" align="center"><input name="valoracion9" type="number" id="valoracion9" class="form-control" value="10" readonly="true" /></td> 
                                <td width="8%">
-                                  <form:input path="calificacion9" id="calificacion9" class="form-control" min="0" max="5.0"/>
+                                  <form:input path="calificacion9" id="calificacion9" class="form-control" min="0" max="5.0" step="0.01" required ="true" onchange="actualizarResultado()"/>
                                 </td>  
-                               <td width="45%" align="center"><form:textarea path="observacion9" class="form-control" placeholder=""/></td>                   
+                               <td width="45%" align="center"><form:textarea path="observacion9" class="form-control" required ="true"/></td>                   
                            </tr>   
                            <tr>  
                                <td width="39%" align="justify">PUNTUACIÓN OBTENIDA (Se debe sumar los puntos obtenidos en cada criterio para obtener la puntuación total)</td>  
-                               <td width="8%" align="center"><form:input path="valoracion10" id="valoracion10" class="form-control" value="10" disabled = "true"/></td> 
+                               <td width="8%" align="center"><input name="valoracion10" id="valoracion10" class="form-control" value="100" readonly="true" /></td> 
                                <td width="8%">
-                                  <form:input path="calificacion10" id="calificacion10" class="form-control" min="0" max="5.0"/>
+                                  <form:input path="calificacion10" id="calificacion10" type="number" class="form-control"  step="0.01" min="0" max="5.0" required ="true" readonly="true"/>
                                 </td>  
-                               <td width="45%" align="center"><form:textarea path="observacion10" class="form-control" placeholder=""/></td>                     
+                               <td width="45%" align="center"><form:textarea path="observacion10" class="form-control" required ="true"/></td>                     
                            </tr>                              
                       </table>
 
@@ -284,5 +296,8 @@
     <script src="resources/js/app.min.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="resources/js/demo.js" type="text/javascript"></script>
+
+
+
   </body>
 </html>

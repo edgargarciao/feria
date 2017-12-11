@@ -147,12 +147,12 @@
                     <input type="hidden" name="t" id="t"  value="<%= t %>" />      
                     <div class="form-group">
                       <label class="form-control-label">Titulo</label>
-                      <form:input path="titulo" id="titulo" class="form-control" placeholder="La gran base de datos"/>
+                      <form:input path="titulo" id="titulo" class="form-control" required="true" placeholder="La gran base de datos"/>
                     </div>
 
                      <div class="form-group">
                       <label class="form-control-label">Resumen</label>
-                      <form:textarea path="resumen" id="resumen" class="form-control" placeholder="La gran base de datos es un articulo publicado en el año 1990 y trata acerca de..."/>
+                      <form:textarea path="resumen" id="resumen" class="form-control" placeholder="La gran base de datos es un articulo publicado en el año 1990 y trata acerca de..." required="true"/>
                     </div>
 
                     <div class="form-group">
@@ -177,20 +177,20 @@
                     <div class="form-group">
                     
                       <label class="form-control-label">Codigo integrante 1</label>
-                       <form:input path="codigoEstudiante1" id="codigoEstudiante1" class="form-control" placeholder="1165409"/>                  
+                       <form:input path="codigoEstudiante1" id="codigoEstudiante1" class="form-control" placeholder="1165409" required="true"/>                  
                     </div>
 
 
                     <div class="form-group">
                       <label class="form-control-label">Codigo integrante 2</label>
-                       <form:input path="codigoEstudiante2" id="codigoEstudiante2" class="form-control" placeholder="1165410"/>                  
+                       <form:input path="codigoEstudiante2" id="codigoEstudiante2" class="form-control" placeholder="1165410" required="true"/>                  
                     </div>
 
                 
                    <div class="form-group">
 
                       <label class="form-control-label">Adjuntar Archivo</label>
-                        <input type="file" name="file" id="file" />      
+                        <input type="file" name="file" id="file" required="true"/>      
                     </div>
 
 

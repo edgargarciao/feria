@@ -130,6 +130,7 @@
                       <th>Linea</th>
                       <th>Codigo Integrante 1</th>
                       <th>Codigo Integrante 2</th>
+                      <th>Calificación</th>
                       
                   </tr>  
                  <c:forEach var="emp" items="${list}">   
@@ -141,7 +142,14 @@
                        <td>${emp.linea}</td>
                        <td>${emp.codigoEstudiante1}</td>
                        <td>${emp.codigoEstudiante2}</td>
-                    
+                       <c:choose>
+                           <c:when test="${not empty emp.descripCalif}">
+                            <td>${emp.calificacion}</td>
+                          </c:when>
+                            <c:otherwise>
+                              <td>El proyecto aún no ha sido calificado.</td>
+                            </c:otherwise>
+                       </c:choose>
                    </tr>  
                  </c:forEach>  
                  

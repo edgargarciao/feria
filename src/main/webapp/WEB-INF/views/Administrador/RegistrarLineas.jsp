@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 
 
 <!DOCTYPE html>
@@ -40,7 +41,7 @@
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="${contextPath}/ufps-feria/indexAdmin?t=<%=t%>" class="logo"><b>Feria De Proyectos</b></a>
+        <a href="${contextPath}/indexAdmin?t=<%=t%>" class="logo"><b>Feria De Proyectos</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -77,22 +78,22 @@
             <li class="header">Opciones Del Administrador</li>
 
             <li class="treeview">
-              <a href="${contextPath}/ufps-feria/registrarEvaluador?t=<%=t%>">
+              <a href="${contextPath}/registrarEvaluador?t=<%=t%>">
                 <i class="fa fa-pencil"></i><span> Registrar Evaluador</span>
               </a>
-              <a href="${contextPath}/ufps-feria/asignarProyectos?t=<%=t%>">
+              <a href="${contextPath}/asignarProyectos?t=<%=t%>">
                 <i class="fa fa-share-square-o"></i> <span> Asignar Proyecto</span>
               </a>
-              <a href="${contextPath}/ufps-feria/calificarProyectos?t=<%=t%>">
+              <a href="${contextPath}/calificarProyectos?t=<%=t%>">
                 <i class="fa fa-check-square-o"></i> <span> Calificar Proyecto</span>
               </a>
-              <a href="${contextPath}/ufps-feria/registrarLinea?t=<%=t%>">
+              <a href="${contextPath}/registrarLinea?t=<%=t%>">
                 <i class="fa fa-list"></i> <span> Registrar Lineas</span>
               </a>
-              <a href="${contextPath}/ufps-feria/asignarHorarios?t=<%=t%>">
+              <a href="${contextPath}/asignarHorarios?t=<%=t%>">
                 <i class="fa fa-calendar"></i> <span> Asignar Horario</span>
               </a>
-              <a href="${contextPath}/ufps-feria/logout?t=<%=t%>">
+              <a href="${contextPath}/logout?t=<%=t%>">
                 <i class="fa fa-power-off"></i><span> Salir</span>
               </a>
             </li>
@@ -121,6 +122,14 @@
             <!-- left column -->
             <div class="col-md-12">
 
+               <c:if test="${not empty result}">
+                <div class="alert alert-success alert-dismissable">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      <h4>  <i class="icon fa fa-check"></i> Línea registrada.</h4>
+                      La línea ha sido registrada exitosamente.
+                </div>
+              </c:if>
+
 
               <div class="box box-success">
 
@@ -130,17 +139,20 @@
                 </div>
                 					
                  <form:form action="guardarLinea" method="post" modelAttribute="linea">
+
+                <input type="hidden" name="t" id="t"  value="<%= t %>" />
+
                 <div class="box-body">
 
                    <div class="form-group">
                       <label class="form-control-label">Nombre</label>
-                      <form:input path="nombre" type="text" class="form-control" placeholder="Base de datos"/>  
+                      <form:input path="nombre" type="text" class="form-control" placeholder="Base de datos" required = "true"/>  
                   </div>
 
 
                    <div class="form-group">
                       <label for="exampleInputEmail1">Descripcion</label>
-                      <form:input path="descripcion" type="text" class="form-control" placeholder="La linea de base de datos enmarca los proyectos relacionados...."/>                        
+                      <form:input path="descripcion" type="text" class="form-control" placeholder="La linea de base de datos enmarca los proyectos relacionados...." required="true"/>                        
                   </div>
 
                   </div>

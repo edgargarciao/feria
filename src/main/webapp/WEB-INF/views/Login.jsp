@@ -26,6 +26,7 @@
     <![endif]-->
   </head>
   <body background="resources/fondo.jpg" >
+    <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     <div class="login-box">
       <div class="login-logo">
         <a><b>LOGIN</b>
@@ -51,19 +52,11 @@
           </div>
 
           <div class="row">
-              
+          
+          
             <div class="col-xs-12">  
-
-              
-              <!--<div class="checkbox icheck">
-                <label>
-                  <input type="checkbox"> Remember Me
-                </label>
-              </div> 
-            
-
-            </div><!-- /.col -->
                 <div class="col-xs-15">
+                  <a href="${contextPath}/index"> Volver Atrás</a>
                   <button type="submit" class="btn btn-success btn-block btn-flat">Sign In</button>
                 </div><!-- /.col -->
             </div>

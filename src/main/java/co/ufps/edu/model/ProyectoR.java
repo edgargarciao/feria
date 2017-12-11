@@ -6,8 +6,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ProyectoR {
 
-	private String titulo, resumen, linea,docenteGuia,nomEst;
+	private String titulo, resumen, linea,docenteGuia,nomEst,descripCalif;
 	private int codp,cod,codigoEstudiante1, codigoEstudiante2;
+	private float calificacion;
 	private MultipartFile  archivo;
 
 	public ProyectoR() {
@@ -102,6 +103,22 @@ public class ProyectoR {
 		return "ProyectoR [titulo=" + titulo + ", resumen=" + resumen + ", linea=" + linea + ", docenteGuia="
 				+ docenteGuia + ", nomEst=" + nomEst + ", codp=" + codp + ", cod=" + cod + ", codigoEstudiante1="
 				+ codigoEstudiante1 + ", codigoEstudiante2=" + codigoEstudiante2 + ", archivo=" + archivo + "]";
+	}
+
+	public float getCalificacion() {
+		return calificacion;
+	}
+
+	public void setCalificacion(float calificacion) {
+		this.calificacion = calificacion;
+	}
+
+	public String getDescripCalif() {
+		return descripCalif;
+	}
+
+	public void setDescripCalif(String descripCalif) {
+		this.descripCalif = descripCalif;
 	}
 
 }
