@@ -4,8 +4,11 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Date;
 import java.sql.JDBCType;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLType;
 import java.sql.Types;
@@ -25,6 +28,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.web.multipart.MultipartFile;
 
 import co.ufps.edu.bd.SpringDbMgr;
+import co.ufps.edu.model.Archivo;
 import co.ufps.edu.model.Proyecto;
 import co.ufps.edu.model.ProyectoR;
 import co.ufps.edu.model.ResultDB;
@@ -280,5 +284,45 @@ public class ProyectoDao {
 
 		int result = springDbMgr.executeDml(query, map);
 
+	}
+
+	public void asignarHorario(MultipartFile file) {
+		SpringDbMgr springDbMgr = new SpringDbMgr();
+
+		// Agrego los datos del registro (nombreColumna/Valor)
+		MapSqlParameterSource map = new MapSqlParameterSource();
+		map.addValue("nombre", file.getOriginalFilename());
+
+		try {
+			map.addValue("contenido", new SqlLobValue(new ByteArrayInputStream(file.getBytes()), file.getBytes().length,
+					new DefaultLobHandler()), Types.BLOB);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String query = "insert into Archivo(nombre,contenido)" + "values(:nombre,:contenido)";
+
+		int result = springDbMgr.executeDml(query, map);
+		
+	}
+	
+	public Archivo getHorario() {
+		SpringDbMgr springDbMgr = new SpringDbMgr();
+		Archivo archivo = new Archivo();
+		String query = "select * from archivo order by id_archivo desc";
+		
+		SqlRowSet result = springDbMgr.executeQuery(query);
+		result.next();
+		
+		archivo.setNombre(result.getString("nombre"));
+		Object imageBlob = (Object) result.getObject("contenido");
+		byte[] con = (byte[]) imageBlob;
+		InputStream binaryStream = null;
+
+		binaryStream = new ByteArrayInputStream(con);
+		archivo.setContenido(binaryStream);
+
+		return archivo;
 	}
 }

@@ -1,17 +1,24 @@
 package co.ufps.edu.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URLConnection;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +33,7 @@ import co.ufps.edu.dao.Evaluacion;
 import co.ufps.edu.dao.LineaDao;
 import co.ufps.edu.dao.ProyectoDao;
 import co.ufps.edu.dao.TutorDao;
+import co.ufps.edu.model.Archivo;
 import co.ufps.edu.model.Evaluador;
 import co.ufps.edu.model.Proyecto;
 import co.ufps.edu.model.ProyectoR;
@@ -68,8 +76,7 @@ public class ProyectoController {
 
 	@PostMapping(value = "/guardarProyecto", headers = ("content-type=multipart/*"))
 	public String guardarProyecto(@ModelAttribute("pro") Proyecto proyecto, @RequestParam("file") MultipartFile file,
-			Model model, @RequestParam("t") String token, HttpServletRequest request,
-			RedirectAttributes redirectAttributes) {
+			Model model, @RequestParam("t") String token, HttpServletRequest request) {
 		if (proyecto.isValidoParaRegistrar(file)) {
 			logController.validarSesion(token, request);
 			proyectoDao.registrarProyecto(proyecto, proyecto.getCod(), file);
@@ -89,24 +96,23 @@ public class ProyectoController {
 	@GetMapping("/calificarProyectos") // Path para el link
 	public String calificarProyectos(Model model, @RequestParam("t") String token, HttpServletRequest request) {
 		logController.validarSesion(token, request);
-		// initModel(model);
 		return "Administrador/CalificarProyecto"; // Nombre Pagina JSP
 	}
 
-	@PostMapping("/calificarProyecto")
-	public String calificarProyecto(int idProyecto, int idEvaluador) {
-		return "Administrador/CalificarProyecto";
-	}
+	
 
 	@GetMapping("/asignarHorarios") // Path para el link
 	public String asignarhorarios(Model model, @RequestParam("t") String token, HttpServletRequest request) {
-		logController.validarSesion(token, request);
-		// initModel(model);
+		logController.validarSesion(token, request);		
 		return "Administrador/AsignarHorario"; // Nombre Pagina JSP
 	}
 
 	@PostMapping("/asignarHorario")
-	public String asignarHorario(@ModelAttribute("proyecto") Proyecto proyecto, Model model) {
+	public String asignarHorario(@RequestParam("file") MultipartFile file,
+			Model model, @RequestParam("t") String token, HttpServletRequest request) {
+		logController.validarSesion(token, request);
+		model.addAttribute("result", "registroExitoso");
+		proyectoDao.asignarHorario(file);
 		return "Administrador/AsignarHorario";
 	}
 
@@ -176,9 +182,28 @@ public class ProyectoController {
 		return "Administrador/AsignarProyecto"; // Nombre Pagina JSP
 	}
 
-	@PostMapping("/asignarProyecto")
-	public String AsignarProyecto(@ModelAttribute("proyecto") Proyecto proyecto, Model model) {
-		return "Administrador/AsignarProyecto";
-	}
+	
+	@GetMapping("/descargarHorario") // Path para el link
+	public void asignarProyectos(HttpServletResponse response) {
+		Archivo a = proyectoDao.getHorario();
+		response.setBufferSize(8192 * 16); 
+		response.setContentType("application/octet-stream");
+		ServletOutputStream ouputStream = null;
+        	
+			try {
+				System.out.println("tam --> "+(IOUtils.toByteArray(a.getContenido()).length));
+				response.setContentLength(IOUtils.toByteArray(a.getContenido()).length);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			response.setHeader("Content-Disposition","attachment; filename=\"" + a.getNombre() +"\"");
+	        try {
+				FileCopyUtils.copy(a.getContenido(), response.getOutputStream());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
+	}
 }

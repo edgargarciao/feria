@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
+
+<%@ page language="java" contentType="text/html; application/octet-stream;charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
@@ -86,7 +87,7 @@
     <h1>Feria De <span class="color">Proyectos</span></h1>
     <p>Charlas y Proyectos en Modalidad Posters </p>
     <div class="clearfix"></div>
-    <a href="#about-section" class="btn btn-default btn-lg page-scroll">Leer más</a> </div>
+    <a href="${contextPath}/ufps-feria/descargarHorario" class="btn btn-default btn-lg page-scroll">Descargar horario</a> </div>
 </header>
 
 <!-- Services Section -->
