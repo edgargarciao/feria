@@ -19,16 +19,12 @@ import co.ufps.edu.model.Estudiante;
 public class EstudianteController {
 
 	private EstudianteDao estudianteDao = new EstudianteDao();
-	
-	@Autowired
-	private LogController logController; 
 
-	
+	@Autowired
+	private LogController logController;
+
 	@GetMapping("/registrarEstudiante")
 	public String registration(HttpServletRequest request) {
-		/*request.getSession().setAttribute("sw", false);
-		request.getSession().setAttribute("titleMessage", "");
-		request.getSession().setAttribute("message", "");*/
 		return "RegistrarEstudiante";
 	}
 
@@ -36,33 +32,42 @@ public class EstudianteController {
 	public Estudiante setUpUserForm() {
 		return new Estudiante();
 	}
-	
+
 	@GetMapping("/index") // Base
 	public String main() {
 		return "index"; // Nombre del archivo jsp
 	}
 
 	@PostMapping(value = "/guardarEstudiante")
-	public String registrarEstudiante(@ModelAttribute("estudiante") Estudiante estudiante, Model model) {
+	public String registrarEstudiante(@ModelAttribute("estudiante") Estudiante estudiante,
+			@RequestParam("contrasena2") String contrasena2, Model model) {
 		if (esCodigoValido()) {
 		}
-		
-		try{
-			boolean result = estudianteDao.registrarEstudiante(estudiante);
-		}catch(Exception e) {
-			
+		if (!estudiante.getContrasena().equals(contrasena2)) {
+
+		} else {
+			try {
+				boolean result = estudianteDao.registrarEstudiante(estudiante);
+				if (result) {
+					model.addAttribute("result", "eee");
+				} else {
+					model.addAttribute("wrong", "eee");
+				}
+			} catch (Exception e) {
+				model.addAttribute("wrong", "eee");
+			}
 		}
-		
-		return "redirect:/index"; 
+		model.addAttribute("estudiante", new Estudiante());
+		return "index";
 	}
 
 	private boolean esCodigoValido() {
 		return true;
 	}
-	
+
 	// Devuelve el jsp
 	@GetMapping("/indexEstudiante") // Path para el link
-	public String getIndex(@RequestParam("t") String token,HttpServletRequest request) {		
+	public String getIndex(@RequestParam("t") String token, HttpServletRequest request) {
 		logController.validarSesion(token, request);
 		return "Estudiante/indexEstudiante";
 	}

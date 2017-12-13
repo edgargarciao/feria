@@ -3,8 +3,10 @@ package co.ufps.edu.dao;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Blob;
 import java.sql.Date;
 import java.sql.JDBCType;
@@ -18,6 +20,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.rowset.serial.SerialBlob;
 
 import org.springframework.jdbc.core.SqlTypeValue;
@@ -307,7 +310,7 @@ public class ProyectoDao {
 		
 	}
 	
-	public Archivo getHorario() {
+	public Archivo getHorario(HttpServletRequest request) {
 		SpringDbMgr springDbMgr = new SpringDbMgr();
 		Archivo archivo = new Archivo();
 		String query = "select * from archivo order by id_archivo desc";
@@ -323,6 +326,20 @@ public class ProyectoDao {
 		binaryStream = new ByteArrayInputStream(con);
 		archivo.setContenido(binaryStream);
 
+
+			    try {
+				    byte[] buffer = new byte[binaryStream.available()];
+				    binaryStream.read(buffer);
+				    String ruta = request.getServletContext().getRealPath("")+archivo.getNombre();
+				    System.out.println("ruta --> "+ruta);
+				    File targetFile = new File(ruta);
+				    OutputStream outStream = new FileOutputStream(targetFile);
+					outStream.write(buffer);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		
 		return archivo;
 	}
 }

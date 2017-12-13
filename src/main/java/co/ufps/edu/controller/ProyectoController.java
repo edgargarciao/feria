@@ -1,12 +1,17 @@
 package co.ufps.edu.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URLConnection;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -183,27 +188,69 @@ public class ProyectoController {
 	}
 
 	
+    /**
+     * Size of a byte buffer to read/write file
+     */
+    private static final int BUFFER_SIZE = 4096;
+             
+    /**
+     * Path of the file to be downloaded, relative to application's directory
+     */
+    
+    private String filePath = "src\\main\\resources";
+	
 	@GetMapping("/descargarHorario") // Path para el link
-	public void asignarProyectos(HttpServletResponse response) {
-		Archivo a = proyectoDao.getHorario();
-		response.setBufferSize(8192 * 16); 
-		response.setContentType("application/octet-stream");
-		ServletOutputStream ouputStream = null;
-        	
-			try {
-				System.out.println("tam --> "+(IOUtils.toByteArray(a.getContenido()).length));
-				response.setContentLength(IOUtils.toByteArray(a.getContenido()).length);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			response.setHeader("Content-Disposition","attachment; filename=\"" + a.getNombre() +"\"");
-	        try {
-				FileCopyUtils.copy(a.getContenido(), response.getOutputStream());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	public void asignarProyectos(HttpServletRequest request,HttpServletResponse response) {
+		Archivo a = proyectoDao.getHorario(request);
+
+        // get absolute path of the application
+        ServletContext context = request.getServletContext();
+        String appPath = context.getRealPath("");
+        System.out.println("appPath = " + appPath);
+ 
+        // construct the complete absolute path of the file
+        String fullPath = appPath +a.getNombre();      
+        File downloadFile = new File(fullPath);
+        FileInputStream inputStream;
+		try {
+			inputStream = new FileInputStream(downloadFile);
+
+         
+        // get MIME type of the file
+        String mimeType = context.getMimeType(fullPath);
+        if (mimeType == null) {
+            // set to binary type if MIME mapping not found
+            mimeType = "application/octet-stream";
+        }
+        System.out.println("MIME type: " + mimeType);
+ 
+        // set content attributes for the response
+        response.setContentType(mimeType);
+        response.setContentLength((int) downloadFile.length());
+ 
+        // set headers for the response
+        String headerKey = "Content-Disposition";
+        String headerValue = String.format("attachment; filename=\"%s\"",
+                downloadFile.getName());
+        response.setHeader(headerKey, headerValue);
+ 
+        // get output stream of the response
+        OutputStream outStream = response.getOutputStream();
+ 
+        byte[] buffer = new byte[BUFFER_SIZE];
+        int bytesRead = -1;
+ 
+        // write bytes read from the input stream into the output stream
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            outStream.write(buffer, 0, bytesRead);
+        }
+ 
+        inputStream.close();
+        outStream.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 }
