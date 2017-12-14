@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html>
 
 <html>
@@ -41,7 +42,7 @@
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="${contextPath}/ufps-feria/indexEvaluador?t=<%=t%>" class="logo"><b>Feria De Proyectos</b></a>
+        <a href="${contextPath}/indexEvaluador?t=<%=t%>" class="logo"><b>Feria De Proyectos</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -79,13 +80,13 @@
             <li class="header">Opciones del Evaluador</li>
 
            <li class="treeview">
-              <a href="${contextPath}/ufps-feria/evaluarProyectos?t=<%=t%>&cod=<%=codigo%>">
+              <a href="${contextPath}/evaluarProyectos?t=<%=t%>&cod=<%=codigo%>">
                 <i class="fa fa-check-square-o"></i><span>Evaluar proyectos</span>
               </a>
-              <a href="${contextPath}/ufps-feria/visualizarProyectos?t=<%=t%>">
+              <a href="${contextPath}/visualizarProyectos?t=<%=t%>&cod=<%=codigo%>">
                 <i class="fa fa-eye"></i> <span>Ver proyectos evaluados</span>
               </a>
-              <a href="${contextPath}/ufps-feria/logout?t=<%=t%>">
+              <a href="${contextPath}/logout?t=<%=t%>">
                 <i class="fa fa-power-off"></i><span>Salir</span>
               </a>  
             </li>          
@@ -117,14 +118,44 @@
                 <div class="box-header">
                   <h3 class="box-title">A continuacion podra Visualizar los Proyectos</h3>
                 </div>
-                <form:form action="visualizarProyecto" method="post" modelAttribute="proyecto">
-                    <!-- text input -->
-                    <div class="form-group">
-                      <label class="form-control-label">Titulo</label>
-                      <form:input path="titulo" class="form-control" placeholder="La gran base de datos"/>
-                    </div>
-                  </form:form>
-              </div>
+  
+
+                  <div class="box-body">
+
+                      <table class="table table-hover">  
+                          <tr>
+                              <th>Id</th>
+                              <th>Estudiante líder</th>
+                              <th>Titulo</th>
+                              <th>Resumen</th>
+                              <th>Docente Guia</th>
+                              <th>Linea</th>
+                              <th>Codigo Integrante 1</th>
+                              <th>Codigo Integrante 2</th>
+                              <th>Calificación</th>
+                          </tr>  
+                         <c:forEach var="emp" items="${list}">   
+                           <tr>  
+                               <td>${emp.codp}</td>  
+                               <td>${emp.nomEst}</td> 
+                               <td>${emp.titulo}</td>  
+                               <td>${emp.resumen}</td>  
+                               <td>${emp.docenteGuia}</td>
+                               <td>${emp.linea}</td>
+                               <td>${emp.codigoEstudiante1}</td>
+                               <td>${emp.codigoEstudiante2}</td>
+                               <td>${emp.calificacion}</td>
+                            
+                           </tr>  
+                         </c:forEach>  
+                         
+                      </table>  
+                  </div>
+
+                        </div>                  
+
+
+
             </div><!--/.col (left) -->
             <!-- right column -->
             <div class="col-md-6">
@@ -138,13 +169,12 @@
       
 
     </div><!-- ./wrapper -->
-
     <!-- jQuery 2.1.3 -->
-    <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- FastClick -->
-    <script src='../../plugins/fastclick/fastclick.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js' type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="resources/js/app.min.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->

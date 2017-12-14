@@ -37,6 +37,7 @@ public class LineaController {
 			HttpServletRequest request) {
 		logController.validarSesion(token, request);
 		lineaDao.registrarLineas(linea);
+		model.addAttribute("linea",new Linea());
 		model.addAttribute("result","Resultado exitoso.");
 		return "Administrador/RegistrarLineas";
 	}

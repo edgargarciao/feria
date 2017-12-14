@@ -85,7 +85,7 @@
                 <i class="fa fa-share-square-o"></i> <span> Asignar Proyecto</span>
               </a>
               <a href="${contextPath}/calificarProyectos?t=<%=t%>">
-                <i class="fa fa-check-square-o"></i> <span> Calificar Proyecto</span>
+                <i class="fa fa-check-square-o"></i> <span> Ver Proyectos calificados</span>
               </a>
               <a href="${contextPath}/registrarLinea?t=<%=t%>">
                 <i class="fa fa-list"></i> <span> Registrar Lineas</span>
@@ -127,8 +127,8 @@
                <c:if test="${not empty result}">
                 <div class="alert alert-success alert-dismissable">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      <h4>  <i class="icon fa fa-check"></i> Proyecto registrado con éxito.</h4>
-                      El proyecto ha sido registrado con éxito
+                      <h4>  <i class="icon fa fa-check"></i> Evaluador registrado con éxito.</h4>
+                      El evaluador ha sido registrado con éxito
                 </div>
               </c:if>
 
@@ -136,7 +136,7 @@
                   <div class="alert alert-warning alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     <h4><i class="icon fa fa-warning"></i> Debes llenar todos los campos.</h4>
-                    Para registrar un proyecto es necesaro llenar todos los campos.
+                    Para registrar un evaluador es necesaro llenar todos los campos.
                   </div>
               </c:if>
 
@@ -152,29 +152,29 @@
 
                     <div class="form-group">
                       <label class="form-control-label">Código</label>
-                      <form:input id="codigo" path="codigo" class="form-control" placeholder="1151007"/>
+                      <form:input id="codigo" path="codigo" class="form-control" placeholder="1151007" required = "true"/>
                     </div>
 
 
                     <div class="form-group">
                       <label class="form-control-label">Nombre</label>
-                      <form:input id="nombre" path="nombre" class="form-control" placeholder="juan Andres"/>
+                      <form:input id="nombre" path="nombre" class="form-control" placeholder="juan Andres" required = "true"/>
                     </div>
 
 
                     <div class="form-group">
                       <label class="form-control-label">Apellidos</label>
-                      <form:input id="apellido" path="apellido" class="form-control" placeholder="Pineda Jaimes"/>
+                      <form:input id="apellido" path="apellido" class="form-control" placeholder="Pineda Jaimes" required = "true"/>
                     </div>
 
                    <div class="form-group">
                       <label class="form-control-label">email</label>
-                      <form:input id="email" path="email" class="form-control" placeholder="juan.pineda@gmail.com"/>
+                      <form:input id="email" path="email" class="form-control" placeholder="juan.pineda@gmail.com" required = "true"/>
                     </div>
 
                    <div class="form-group">
                       <label class="form-control-label">Contraseña</label>
-                      <form:password id="contraseña" path="contraseña" class="form-control" placeholder="Password1234"/>
+                      <form:password id="contraseña" path="contraseña" class="form-control" placeholder="Password1234" required = "true"/>
                     </div>
                     
                      <form:checkboxes element="span class='form-check-input'" items="${ListaLineas}" path="lineas"/>
@@ -206,6 +206,7 @@
       
   </div><!-- ./wrapper -->
 
+
     <!-- jQuery 2.1.3 -->
     <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
     <!-- Bootstrap 3.3.2 JS -->
@@ -216,6 +217,8 @@
     <script src="resources/js/app.min.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="resources/js/demo.js" type="text/javascript"></script>
+
+
 
   </body>
 </html>

@@ -283,6 +283,7 @@ En la actualidad se deben promover el desarrollo de proyectos productivos a part
                       <h4>  <i class="icon fa fa-check"></i> Estudiante registrado.</h4>
                       El estudiante ha sido registrado satisfactoriamente.
                 </div>
+                
               </c:if>
               <c:if test="${not empty wrong}">
                   <div class="alert alert-warning alert-dismissable">

@@ -124,7 +124,8 @@ public class ProyectoDao {
 			String linea = sqlRowSet.getString("linea");
 			String desCal = sqlRowSet.getString("descal");
 			float cal = sqlRowSet.getFloat("cal");
-
+			
+		
 			ArrayList<Integer> cods = getCodsInt(codigoProyecto);
 			int est1 = cods.get(0);
 			int est2 = (cods.size() > 1) ? cods.get(1) : 0;
@@ -342,4 +343,89 @@ public class ProyectoDao {
 		
 		return archivo;
 	}
+	
+	public List<ProyectoR> getProyectosEvaluadosPorEvaluador(String codigoEvaluador) {
+		SpringDbMgr springDbMgr = new SpringDbMgr();
+		List<ProyectoR> proyectos = new LinkedList<>();
+		MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+		mapSqlParameterSource.addValue("code", Integer.parseInt(codigoEvaluador));
+		SqlRowSet sqlRowSet = springDbMgr.executeQuery(
+				"SELECT DISTINCT e.nombre nomEst, ep.id_proyecto id_proyecto, p.titulo titulo, p.resumen resumen,tutor.nombre docenteGuia, linea.nombre linea,p.calificacion cal \n"
+						+ "from proyecto_evaluador pe,estudiante e,estudiante_proyecto ep,proyecto p,linea,tutor \n"
+						+ "WHERE e.codigo = ep.id_estudiante AND p.id_proyecto = ep.id_proyecto \n"
+						+ "and linea.codigoLinea = p.codigoLinea \n" + "and tutor.codigo = p.docenteGuia "
+						+ "and p.id_proyecto = pe.id_proyecto "
+						+ "and p.id_proyecto IN (	SELECT c.codigoProyecto FROM calificacion c ) and pe.id_evaluador = :code",
+				mapSqlParameterSource);
+		
+		while (sqlRowSet.next()) {
+			int codigoProyecto = sqlRowSet.getInt("id_proyecto");
+			String titulo = sqlRowSet.getString("titulo");
+			String resumen = sqlRowSet.getString("resumen");
+			String docenteGuia = sqlRowSet.getString("docenteGuia");
+			String linea = sqlRowSet.getString("linea");
+			String nombreEstudiante = sqlRowSet.getString("nomEst");
+			float cal = sqlRowSet.getFloat("cal");
+
+			ArrayList<Integer> cods = getCodsInt(codigoProyecto);
+			int est1 = cods.get(0);
+			int est2 = (cods.size() > 1) ? cods.get(1) : 0;
+			ProyectoR r = new ProyectoR();
+			r.setCodp(codigoProyecto);
+			r.setCodigoEstudiante1(est1);
+			r.setCodigoEstudiante2(est2);
+			r.setDocenteGuia(docenteGuia);
+			r.setLinea(linea);
+			r.setTitulo(titulo);
+			r.setResumen(resumen);
+			r.setNomEst(nombreEstudiante);
+			r.setCalificacion(cal);
+			proyectos.add(r);
+		}
+		return proyectos;
+	}
+	
+	public List<ProyectoR> getProyectosEvaluados() {
+		SpringDbMgr springDbMgr = new SpringDbMgr();
+		List<ProyectoR> proyectos = new LinkedList<>();
+		MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+
+		SqlRowSet sqlRowSet = springDbMgr.executeQuery(
+				"SELECT DISTINCT e.nombre nomEst, ep.id_proyecto id_proyecto, p.titulo titulo, p.resumen resumen,tutor.nombre docenteGuia, linea.nombre linea,p.calificacion cal \n"
+						+ "from proyecto_evaluador pe,estudiante e,estudiante_proyecto ep,proyecto p,linea,tutor \n"
+						+ "WHERE e.codigo = ep.id_estudiante AND p.id_proyecto = ep.id_proyecto \n"
+						+ "and linea.codigoLinea = p.codigoLinea \n" + "and tutor.codigo = p.docenteGuia "
+						+ "and p.id_proyecto = pe.id_proyecto "
+						+ "and p.id_proyecto IN (	SELECT c.codigoProyecto FROM calificacion c )"
+						+ "ORDER BY p.calificacion DESC",
+				mapSqlParameterSource);
+		
+		while (sqlRowSet.next()) {
+			int codigoProyecto = sqlRowSet.getInt("id_proyecto");
+			String titulo = sqlRowSet.getString("titulo");
+			String resumen = sqlRowSet.getString("resumen");
+			String docenteGuia = sqlRowSet.getString("docenteGuia");
+			String linea = sqlRowSet.getString("linea");
+			String nombreEstudiante = sqlRowSet.getString("nomEst");
+			float cal = sqlRowSet.getFloat("cal");
+
+			ArrayList<Integer> cods = getCodsInt(codigoProyecto);
+			int est1 = cods.get(0);
+			int est2 = (cods.size() > 1) ? cods.get(1) : 0;
+			ProyectoR r = new ProyectoR();
+			r.setCodp(codigoProyecto);
+			r.setCodigoEstudiante1(est1);
+			r.setCodigoEstudiante2(est2);
+			r.setDocenteGuia(docenteGuia);
+			r.setLinea(linea);
+			r.setTitulo(titulo);
+			r.setResumen(resumen);
+			r.setNomEst(nombreEstudiante);
+			r.setCalificacion(cal);
+			proyectos.add(r);
+		}
+		return proyectos;
+	}
+	
+	
 }

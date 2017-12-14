@@ -74,7 +74,7 @@
               <a href="${contextPath}/ufps-feria/evaluarProyectos?t=<%=t%>&cod=<%=codigo%>">
                 <i class="fa fa-check-square-o"></i><span> Evaluar proyectos</span>
               </a>
-              <a href="${contextPath}/ufps-feria/visualizarProyectos?t=<%=t%>">
+              <a href="${contextPath}/ufps-feria/visualizarProyectos?t=<%=t%>&cod=<%=codigo%>">
                 <i class="fa fa-eye"></i> <span> Ver proyectos evaluados</span>
               </a>
               <a href="${contextPath}/ufps-feria/logout?t=<%=t%>">

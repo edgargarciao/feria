@@ -101,20 +101,20 @@ public class ProyectoController {
 	@GetMapping("/calificarProyectos") // Path para el link
 	public String calificarProyectos(Model model, @RequestParam("t") String token, HttpServletRequest request) {
 		logController.validarSesion(token, request);
+		List<ProyectoR> list = proyectoDao.getProyectosEvaluados();
+		model.addAttribute("list", list);
 		return "Administrador/CalificarProyecto"; // Nombre Pagina JSP
 	}
 
-	
-
 	@GetMapping("/asignarHorarios") // Path para el link
 	public String asignarhorarios(Model model, @RequestParam("t") String token, HttpServletRequest request) {
-		logController.validarSesion(token, request);		
+		logController.validarSesion(token, request);
 		return "Administrador/AsignarHorario"; // Nombre Pagina JSP
 	}
 
 	@PostMapping("/asignarHorario")
-	public String asignarHorario(@RequestParam("file") MultipartFile file,
-			Model model, @RequestParam("t") String token, HttpServletRequest request) {
+	public String asignarHorario(@RequestParam("file") MultipartFile file, Model model, @RequestParam("t") String token,
+			HttpServletRequest request) {
 		logController.validarSesion(token, request);
 		model.addAttribute("result", "registroExitoso");
 		proyectoDao.asignarHorario(file);
@@ -160,9 +160,11 @@ public class ProyectoController {
 	}
 
 	@GetMapping("/visualizarProyectos") // Path para el link
-	public String visualizarProyectos(Model model, @RequestParam("t") String token, HttpServletRequest request) {
+	public String visualizarProyectos(Model model, @RequestParam("t") String token, HttpServletRequest request,
+			@RequestParam("cod") String codigo) {
 		logController.validarSesion(token, request);
-		// initModel(model);
+		List<ProyectoR> list = proyectoDao.getProyectosEvaluadosPorEvaluador(String.valueOf(codigo));
+		model.addAttribute("list", list);
 		return "Evaluador/VisualizarProyecto"; // Nombre Pagina JSP
 	}
 
@@ -187,66 +189,63 @@ public class ProyectoController {
 		return "Administrador/AsignarProyecto"; // Nombre Pagina JSP
 	}
 
-	
-    /**
-     * Size of a byte buffer to read/write file
-     */
-    private static final int BUFFER_SIZE = 4096;
-             
-    /**
-     * Path of the file to be downloaded, relative to application's directory
-     */
-    
-    private String filePath = "src\\main\\resources";
-	
+	/**
+	 * Size of a byte buffer to read/write file
+	 */
+	private static final int BUFFER_SIZE = 4096;
+
+	/**
+	 * Path of the file to be downloaded, relative to application's directory
+	 */
+
+	private String filePath = "src\\main\\resources";
+
 	@GetMapping("/descargarHorario") // Path para el link
-	public void asignarProyectos(HttpServletRequest request,HttpServletResponse response) {
+	public void asignarProyectos(HttpServletRequest request, HttpServletResponse response) {
 		Archivo a = proyectoDao.getHorario(request);
 
-        // get absolute path of the application
-        ServletContext context = request.getServletContext();
-        String appPath = context.getRealPath("");
-        System.out.println("appPath = " + appPath);
- 
-        // construct the complete absolute path of the file
-        String fullPath = appPath +a.getNombre();      
-        File downloadFile = new File(fullPath);
-        FileInputStream inputStream;
+		// get absolute path of the application
+		ServletContext context = request.getServletContext();
+		String appPath = context.getRealPath("");
+		System.out.println("appPath = " + appPath);
+
+		// construct the complete absolute path of the file
+		String fullPath = appPath + a.getNombre();
+		File downloadFile = new File(fullPath);
+		FileInputStream inputStream;
 		try {
 			inputStream = new FileInputStream(downloadFile);
 
-         
-        // get MIME type of the file
-        String mimeType = context.getMimeType(fullPath);
-        if (mimeType == null) {
-            // set to binary type if MIME mapping not found
-            mimeType = "application/octet-stream";
-        }
-        System.out.println("MIME type: " + mimeType);
- 
-        // set content attributes for the response
-        response.setContentType(mimeType);
-        response.setContentLength((int) downloadFile.length());
- 
-        // set headers for the response
-        String headerKey = "Content-Disposition";
-        String headerValue = String.format("attachment; filename=\"%s\"",
-                downloadFile.getName());
-        response.setHeader(headerKey, headerValue);
- 
-        // get output stream of the response
-        OutputStream outStream = response.getOutputStream();
- 
-        byte[] buffer = new byte[BUFFER_SIZE];
-        int bytesRead = -1;
- 
-        // write bytes read from the input stream into the output stream
-        while ((bytesRead = inputStream.read(buffer)) != -1) {
-            outStream.write(buffer, 0, bytesRead);
-        }
- 
-        inputStream.close();
-        outStream.close();
+			// get MIME type of the file
+			String mimeType = context.getMimeType(fullPath);
+			if (mimeType == null) {
+				// set to binary type if MIME mapping not found
+				mimeType = "application/octet-stream";
+			}
+			System.out.println("MIME type: " + mimeType);
+
+			// set content attributes for the response
+			response.setContentType(mimeType);
+			response.setContentLength((int) downloadFile.length());
+
+			// set headers for the response
+			String headerKey = "Content-Disposition";
+			String headerValue = String.format("attachment; filename=\"%s\"", downloadFile.getName());
+			response.setHeader(headerKey, headerValue);
+
+			// get output stream of the response
+			OutputStream outStream = response.getOutputStream();
+
+			byte[] buffer = new byte[BUFFER_SIZE];
+			int bytesRead = -1;
+
+			// write bytes read from the input stream into the output stream
+			while ((bytesRead = inputStream.read(buffer)) != -1) {
+				outStream.write(buffer, 0, bytesRead);
+			}
+
+			inputStream.close();
+			outStream.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

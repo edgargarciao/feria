@@ -9,7 +9,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-	private int maxUploadSizeInMb = 5 * 1024 * 1024; // 5 MB
+	private int maxUploadSizeInMb = 5 * 1024 * 1024 * 1024; // 5 MB
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {

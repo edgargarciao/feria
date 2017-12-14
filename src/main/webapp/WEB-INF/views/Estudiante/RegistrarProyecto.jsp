@@ -61,7 +61,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="resources/img/avatar.jpg" class="img-circle" alt="User Image" />
+              <img src="resources/img/avatar.png" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
               <p><%=nombre%></p>
@@ -147,7 +147,7 @@
                     <input type="hidden" name="t" id="t"  value="<%= t %>" />      
                     <div class="form-group">
                       <label class="form-control-label">Titulo</label>
-                      <form:input path="titulo" id="titulo" class="form-control" required="true" placeholder="La gran base de datos"/>
+                      <form:input path="titulo" id="titulo" class="form-control" required="true" placeholder="La gran base de datos" />
                     </div>
 
                      <div class="form-group">
